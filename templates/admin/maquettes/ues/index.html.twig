@@ -1,0 +1,324 @@
+{%extends "admin/base.html.twig"%}
+{%block contenu%}
+
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8" align="center">
+        <h1>Modules d'enseignements</h1>
+    </div>
+    <div class="col-2"></div>
+</div><br>
+<br>
+<button type="button" class="btn mr-2 mb-2 btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Nouvelle UE</button>
+{#<a href="" target="blinck" class="btn btn-success"><i class="fa fa-print"></i> Etat à l'impresson</a>#}
+<p></p>
+
+    {#<div class="alert alert-success" role="alert" style="background: #008000;color:white;text-align: center">
+        <button class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        
+    </div>#}
+
+<div class="main-card mb-3 card">
+    <div class="card-body">
+        <table style="width: 100%;" id="example" class="table table-hover table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Ref</th>
+                    <th>Semstre</th>
+                    <th>Titre</th>
+                    <th>ECTS HT</th>
+                    <th>Type</th>
+                    <th>Prérequis</th>
+                    <th>CM</th>
+                    <th>TD</th>
+                    <th>TP</th>
+                    <th>Effectif</th>
+                    <th>Groupe CM</th>
+                    <th>Groupe TD</th>
+                    <th>Groupe TP</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                        
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <a href="" class="btn btn-warning btn-sm text-white"><i class="fa fa-edit"></i></a>
+                            <a href="" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <a href="" class="btn btn-warning btn-sm text-white"><i class="fa fa-edit"></i></a>
+                            <a href="" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <a href="" class="btn btn-warning btn-sm text-white"><i class="fa fa-edit"></i></a>
+                            <a href="" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+        
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Ref</th>
+                    <th>Semstre</th>
+                    <th>Titre</th>
+                    <th>ECTS HT</th>
+                    <th>Type</th>
+                    <th>Prérequis</th>
+                    <th>CM</th>
+                    <th>TD</th>
+                    <th>TP</th>
+                    <th>Effectif</th>
+                    <th>Groupe CM</th>
+                    <th>Groupe TD</th>
+                    <th>Groupe TP</th>
+                    <th>Action</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Enregistrement des UES</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="" method="post">
+            <div class="row">
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <div class="col-4">Référence : </div>
+                        <div class="col-10">
+                            <input type="text" name="reference" id="reference" class="form-control">
+                           
+                                <span class="text-danger"></span>
+                            
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-4">Semestre : </div>
+                        <div class="col-10">
+                            <input type="number" name="semestre" id="semestre" class="form-control">
+                            
+                                <span class="text-danger"></span>
+                            
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-6">Titre :</div>
+                        <div class="col-10">
+                            <input type="text" name="titre" id="titre" class="form-control">
+                            
+                                <span class="text-danger"></span>
+                            
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-6">ECTS :</div>
+                        <div class="col-10">
+                            <input type="number" name="ects" id="ects" class="form-control">
+                            
+                                <span class="text-danger"></span>
+                            
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-6">Type :</div>
+                        <div class="col-10">
+                            <input type="text" name="type" id="type" class="form-control">
+                            
+                                <span class="text-danger"></span>
+                            
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-6">Statut :</div>
+                        <div class="col-10">
+                            <select name="statut" id="statut" class="form-control">
+                                <option value=""></option>
+                                <option value="obligatoire">Obligatoire</option>
+                                <option value="optionnel">Optionnel</option>
+                            </select>
+                                <span class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-6">Connaissances :</div>
+                        <div class="col-10">
+                            <select name="conn" id="conn" class="form-control">
+                                <option value=""></option>
+                                <option value="conn_1">CONN_1</option>
+                                <option value="conn_2">CONN_2</option>
+                                <option value="conn_3">CONN_3</option>
+                            </select>
+                                <span class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-6">Compétences :</div>
+                        <div class="col-10">
+                            <select name="comp" id="comp" class="form-control">
+                                <option value=""></option>
+                                <option value="comp_1">COMP_1</option>
+                                <option value="comp_2">COMP_2</option>
+                                <option value="comp_3">COMP_3</option>
+                            </select>
+                                <span class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-6">Prérequis :</div>
+                        <div class="col-10">
+                            <input type="text" name="prerequis" id="prerequis" class="form-control">
+                            
+                                <span class="text-danger"></span>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <div class="col-6">CM :</div>
+                        <div class="col-10">
+                            <input type="number" name="cm" id="cm" class="form-control">
+                            
+                                <span class="text-danger"></span>
+                            
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-4">TD :</div>
+                        <div class="col-10">
+                            <input type="number" name="td" id="td" class="form-control">
+                            
+                                <span class="text-danger"></span>
+                            
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-8">TP :</div>
+                        <div class="col-10">
+                            <input type="number" name="tp" id="tp" class="form-control">
+                            
+                                <span class="text-danger"></span>
+                            
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-4">Effectif :</div>
+                        <div class="col-10">
+                            <input type="number" name="effectif" id="effectif" class="form-control">
+                            
+                                <span class="text-danger"></span>
+                            
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-4">Groupe CM :</div>
+                        <div class="col-10">
+                            <input type="number" name="groupe_cm" id="groupe_cm" class="form-control">
+                            
+                                <span class="text-danger"></span>
+                            
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-4">Groupe TD :</div>
+                        <div class="col-10">
+                            <input type="number" name="groupe_td" id="groupe_td" class="form-control">
+                            
+                                <span class="text-danger"></span>
+                            
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-4">Groupe TP :</div>
+                        <div class="col-10">
+                            <input type="number" name="groupe_tp" id="groupe_tp" class="form-control">
+                            
+                                <span class="text-danger"></span>
+                            
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-8">Modalités de contrôle de connaissances :</div>
+                        <div class="col-10">
+                            <select name="mcc" id="mcc" class="form-control">
+                                <option value=""></option>
+                                <option value="session_1">SESSION_1</option>
+                                <option value="seconde_chance">SECONDE_CHANCE</option>
+                                <option value="session_2">SESSION_2</option>
+                            </select>
+                                <span class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-4"></div>
+                        <div class="col-10">
+                            <input type="submit" name="enregistrer" id="enregistrer" class="form-control btn btn-primary" value="Enregistrer">
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        <form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{%endblock%}
+

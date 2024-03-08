@@ -1,0 +1,71 @@
+{%extends "admin/base.html.twig"%}
+{%block contenu%}
+
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8" align="center">
+        <h1>Diplômes</h1>
+    </div>
+    <div class="col-2"></div>
+</div><br>
+<br>
+
+{% for type, messages in app.flashes %}
+<div class="alert alert-{{ type }}" role="alert" style="color:black; text-align: center">
+    {{ messages | join(' . ') }}
+    <button class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+</div>
+{% endfor %}
+
+<a type="button" class="btn mr-2 mb-2 btn-primary" href="{{path('ajout_diplome')}}">Nouveau diplôme</a>
+
+<div class="main-card mb-3 card">
+    <div class="card-body">
+        <table style="width: 100%;" id="example" class="table table-hover table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Identifiant</th>
+                    <th>Intitulé</th>
+                    <th>Etablissement</th>
+                    <th>Années</th>
+                    <th>Nombre de semestres</th>
+                    <th>LMD</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for diplome in diplomes %}        
+                <tr>
+                    <td>{{ diplome.id }}</td>
+                    <td>{{ diplome.nomDip }}</td>
+                    <td>{{ diplome.etablissementDip }}</td>
+                    <td>{{ diplome.anneesDip }}</td>
+                    <td>{{ diplome.nbSemestresDip }}</td>
+                    <td>{{ diplome.lmd }}</td>
+                    <td>
+                        <a href="{{ path('modifier_diplome', {id: diplome.id}) }}" class="btn btn-warning btn-sm text-white">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <a href="{{ path('supprimer_diplome', {id: diplome.id}) }}" class="btn btn-danger btn-sm">
+                        <i class="fa fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Identifiant</th>
+                    <th>Intitulé</th>
+                    <th>Etablissement</th>
+                    <th>Années</th>
+                    <th>Nombre de semestres</th>
+                    <th>LMD</th>
+                    <th>Action</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+{%endblock%}

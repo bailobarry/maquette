@@ -1,5 +1,5 @@
-controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
-    type: attribute
+
+admin:
+    resource: routes/admin/routes.yaml
+    prefix: /admin
+

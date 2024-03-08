@@ -1,0 +1,60 @@
+
+dashboard : 
+    path : /dashboard
+    controller: App\Controller\DashboardController::dashboard
+
+login :
+    path: /login
+    controller: App\Controller\DashboardController::login
+
+register :
+    path : /register
+    controller: App\Controller\DashboardController::register
+
+utilisateur :
+    path : /utilisateur
+    controller : App\Controller\DashboardController::utilisateur
+
+diplome :
+    path : /diplome
+    controller : App\Controller\DiplomesController::afficher
+
+ajout_diplome:
+    path : /ajout_diplome
+    controller : App\Controller\DiplomesController::ajouter
+
+modifier_diplome:
+    path : /modifier_diplome-{id}
+    controller : App\Controller\DiplomesController::modifier
+
+supprimer_diplome:
+    path : /supprimer_diplome-{id}
+    controller : App\Controller\DiplomesController::supprimer
+
+parcours :
+    path : /parcours
+    controller : App\Controller\DashboardController::parcours
+
+blocs_connaissances :
+    path : /blocs_connaissances
+    controller : App\Controller\DashboardController::blocs_connaissances
+
+connaissance :
+    path : /connaissance
+    controller : App\Controller\DashboardController::connaissance
+
+blocs_competences :
+    path : /blocs_competences
+    controller : App\Controller\DashboardController::blocs_competences
+
+competence :
+    path : /competence
+    controller : App\Controller\DashboardController::competence
+
+ues :
+    path : /ues
+    controller : App\Controller\DashboardController::ues
+
+mcc :
+    path : /mcc
+    controller : App\Controller\DashboardController::mcc
