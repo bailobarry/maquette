@@ -45,7 +45,19 @@ connaissance :
 
 blocs_competences :
     path : /blocs_competences
-    controller : App\Controller\DashboardController::blocs_competences
+    controller : App\Controller\BlocsCompetencesController::afficher
+
+ajouter_blocs_competences :
+    path : /ajouter_blocs_competences
+    controller : App\Controller\BlocsCompetencesController::ajouter
+
+modifier_blocs_competences :
+    path : /modifier_blocs_competences-{id}
+    controller : App\Controller\BlocsCompetencesController::modifier
+
+supprimer_blocs_competences :
+    path : /supprimer_blocs_competences-{id}
+    controller : App\Controller\BlocsCompetencesController::supprimer
 
 competence :
     path : /competence

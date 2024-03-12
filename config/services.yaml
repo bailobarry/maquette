@@ -13,6 +13,15 @@ services:
         public: false
     
     App\Entity\Diplomes: ~
+    App\Entity\BlocsCompetences: ~
+    App\Entity\Competences: ~
+    App\Entity\Connaissances: ~
+    App\Entity\MCCRNE: ~
+    App\Entity\Parcours: ~
+    App\Entity\Role: ~
+    App\Entity\Statut: ~
+    App\Entity\Ues: ~
+    App\Entity\Utilisateurs: ~
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
