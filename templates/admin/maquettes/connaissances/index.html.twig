@@ -1,104 +1,56 @@
-{%extends "admin/base.html.twig"%}
-{%block contenu%}
+{% extends "admin/base.html.twig" %}
+{% block contenu %}
 
-{#<div class="alert alert-success" role="alert" style="background: #008000;color:white;text-align: center">
-    <button class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-</div>#}
 <div>
+    {% for message in app.flashes('success') %}
+    <div class="alert alert-success" role="alert">
+        {{ message }}
+    </div>
+    {% endfor %}
+
     <div class="modal-content">
         <div class="modal-header bg-primary text-white" align = "center">
-        <h5 class="modal-title" id="exampleModalLongTitle">Gestion des connaissances</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle">Gestion de connaissance</h5>
         </div>
-        <div class="modal-body">
-            <form action="" method="post">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="form-group">
-                        <div class="col-6">Identifiant du bloc :</div>
-                        <div class="col-10">
-                            <select name="id_bloc_conn" id="id_bloc_conn" class="form-control">
-                                <option value=""></option>
-                                <option value="conn_1">CONN_1</option>
-                                <option value="conn_2">CONN_2</option>
-                                <option value="conn_3">CONN_3</option>
-                            </select>
-                                <span class="text-danger"></span>
-                        </div>
-                    </div>
-                        <div class="form-group">
-                            <div class="col-4">ETCS Connaissance : </div>
-                            <div class="col-10">
-                                <input type="number" name="ects_conn" id="ects_conn" class="form-control">
-                                    <span class="text-danger"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="form-group">
-                            <div class="col-8">Description de la connaissance :</div>
-                            <div class="col-10">
-                                <textarea raws="8" name="desc_conn" id="desc_conn" class="form-control"></textarea>
-                                    <span class="text-danger"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-3"></div>
-                    <div class="col-6">
-                        <input type="submit" name="enregistrer" id="enregistrer" class="form-control btn btn-primary" value="Enregistrer">
-                    </div>
-                </div>
-            <form>
-        </div>
+     
     </div>
 </div><br><br>
-{#<a href="" target="blinck" class="btn btn-success"><i class="fa fa-print"></i> Etat à l'impresson</a>#}
+
+<a type="button" class="btn mr-2 mb-2 btn-primary" href="{{path('ajouter_connaissance')}}">Nouvelle connaissance</a>
+
 <div class="main-card mb-3 card">
     <div class="card-body">
         <table style="width: 100%;" id="example" class="table table-hover table-striped table-bordered">
             <thead>
                 <tr>
                     <th>Identifiant du bloc</th>
-                    <th>ECTS</th>
-                    <th>Description</th>
+                    <th>Ects du connaissance</th>
+                    <th>Description du connaissance</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
+                {% for Connaissance in Connaissances %}
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{ Connaissance.id }}</td>
+                    <td>{{ Connaissance.ectsConn }}</td>
+                    <td>{{ Connaissance.descriptionConn }}</td>
                     <td>
-                        <a href="" class="btn btn-warning btn-sm text-white"><i class="fa fa-edit"></i></a>
-                        <a href="" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                        <a href="{{ path('modifier_connaissance', {id: Connaissance.id}) }}" class="btn btn-warning btn-sm text-white">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <a href="{{ path('supprimer_connaissance', {id: Connaissance.id}) }}" class="btn btn-danger btn-sm">
+                            <i class="fa fa-trash"></i>
+                        </a>
                     </td>
                 </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <a href="" class="btn btn-warning btn-sm text-white"><i class="fa fa-edit"></i></a>
-                        <a href="" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <a href="" class="btn btn-warning btn-sm text-white"><i class="fa fa-edit"></i></a>
-                        <a href="" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-                    </td>
-                </tr>
+                {% endfor %}
             </tbody>
             <tfoot>
                 <tr>
                     <th>Identifiant du bloc</th>
-                    <th>ECTS</th>
-                    <th>Description</th>
+                    <th>Ects du connaissance</th>
+                    <th>Description du connaissance</th>
                     <th>Action</th>
                 </tr>
             </tfoot>
@@ -106,5 +58,4 @@
     </div>
 </div>
 
-{%endblock%}
-
+{% endblock %}

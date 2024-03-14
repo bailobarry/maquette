@@ -1,54 +1,23 @@
-{%extends "admin/base.html.twig"%}
-{%block contenu%}
+{% extends "admin/base.html.twig" %}
+{% block contenu %}
 
-{#<div class="alert alert-success" role="alert" style="background: #008000;color:white;text-align: center">
-    <button class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-</div>#}
 <div>
+    {% for message in app.flashes('success') %}
+    <div class="alert alert-success" role="alert">
+        {{ message }}
+    </div>
+    {% endfor %}
+
     <div class="modal-content">
         <div class="modal-header bg-primary text-white" align = "center">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modalités de contrôle de connaissances (RCNE)</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle">Gestion de compétences</h5>
         </div>
-        <div class="modal-body">
-            <form action="" method="post">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="form-group">
-                            <div class="col-4">Session 1 :</div>
-                            <div class="col-10">
-                                <input type="text" name="session1" id="session1" class="form-control">
-                                    <span class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-4">Seconde chance : </div>
-                            <div class="col-10">
-                                <input type="text" name="chance" id="chance" class="form-control">
-                                    <span class="text-danger"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="form-group">
-                            <div class="col-4">Session 2 :</div>
-                            <div class="col-10">
-                                <input type="text" name="session2" id="session2" class="form-control">
-                                    <span class="text-danger"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-3"></div>
-                    <div class="col-6">
-                        <input type="submit" name="enregistrer" id="enregistrer" class="form-control btn btn-primary" value="Enregistrer">
-                    </div>
-                </div>
-            <form>
-        </div>
+     
     </div>
 </div><br><br>
-{#<a href="" target="blinck" class="btn btn-success"><i class="fa fa-print"></i> Etat à l'impresson</a>#}
+
+<a type="button" class="btn mr-2 mb-2 btn-primary" href="{{path('ajouter_mcc')}}">Nouvelle MCC</a>
+
 <div class="main-card mb-3 card">
     <div class="card-body">
         <table style="width: 100%;" id="example" class="table table-hover table-striped table-bordered">
@@ -61,37 +30,35 @@
                 </tr>
             </thead>
             <tbody>
+                {% for mcc in mcc %}
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{ mcc.id }}</td>
+                    <td>{{ mcc.session1 }}</td>
+                    <td>{{ mcc.secondeChance }}</td>
+                    <td>{{ mcc.seconde2 }}</td>
+                    
                     <td>
-                        <a href="" class="btn btn-warning btn-sm text-white"><i class="fa fa-edit"></i></a>
-                        <a href="" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                        <a href="{{ path('modifier_mcc', {id: mcc.id}) }}" class="btn btn-warning btn-sm text-white">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <a href="{{ path('supprimer_mcc', {id: mcc.id}) }}" class="btn btn-danger btn-sm">
+                            <i class="fa fa-trash"></i>
+                        </a>
                     </td>
                 </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <a href="" class="btn btn-warning btn-sm text-white"><i class="fa fa-edit"></i></a>
-                        <a href="" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <a href="" class="btn btn-warning btn-sm text-white"><i class="fa fa-edit"></i></a>
-                        <a href="" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-                    </td>
-                </tr>
+                {% endfor %}
             </tbody>
+            <tfoot>
+                <tr>
+                    <th>Session 1</th>
+                    <th>Seconde chance</th>
+                    <th>Session 2</th>
+                    <th>Action</th>
+                    
+                </tr>
+            </tfoot>
         </table>
     </div>
 </div>
 
-{%endblock%}
-
+{% endblock %}

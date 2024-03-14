@@ -19,7 +19,7 @@ class MCCRNE
     private ?string $session1 = null;
 
     #[ORM\Column(length: 100)]
-    private ?string $sencondeChance = null;
+    private ?string $secondeChance = null;
 
     #[ORM\Column(length: 100)]
     private ?string $session2 = null;
@@ -49,14 +49,14 @@ class MCCRNE
         return $this;
     }
 
-    public function getSencondeChance(): ?string
+    public function getSecondeChance(): ?string
     {
-        return $this->sencondeChance;
+        return $this->secondeChance;
     }
 
-    public function setSencondeChance(string $sencondeChance): static
+    public function setSecondeChance(string $secondeChance): static
     {
-        $this->sencondeChance = $sencondeChance;
+        $this->secondeChance = $secondeChance;
 
         return $this;
     }

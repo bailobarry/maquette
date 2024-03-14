@@ -1,0 +1,45 @@
+{% extends "admin/base.html.twig" %}
+{% block contenu %}
+
+<div class="container p-3">
+    <div class="row">
+        <div class="col-12 shadow">
+            <div class="row">
+                <br>
+                <div class="col-2"></div>
+                <div class="col-8" align="center">
+                    <h4>Ajouter un bloc de compétence</h4>
+                </div>
+                <div class="col-2"></div>
+            </div><hr>
+            {{ form_start(form) }}
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form_row(form.reference) }}
+                    {{ form_row(form.semestre) }}
+                    {{ form_row(form.titre) }}
+                    {{ form_row(form.ects) }}
+                    {{ form_row(form.type) }}
+                    {{ form_row(form.prerequis) }}
+                    {{ form_row(form.cm) }}
+                    {{ form_row(form.td) }}
+                    {{ form_row(form.tp) }}
+                    {{ form_row(form.effectif) }}
+                    {{ form_row(form.groupeCM) }}
+                    {{ form_row(form.groupeTD) }}
+                    {{ form_row(form.groupeTP) }}
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                   {{form_row(form.save)}}
+                    <a class="btn btn-danger" href="{{ path('ues') }}">Annuler</a>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

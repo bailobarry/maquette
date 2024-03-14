@@ -21,7 +21,7 @@ class Parcours
     private ?string $nomParc = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
-    private ?int $anneesParc = null;
+    private ?string $anneesParc = null;
 
     #[ORM\ManyToOne(inversedBy: 'parcours')]
     private ?Diplomes $diplomes = null;
@@ -58,12 +58,12 @@ class Parcours
         return $this;
     }
 
-    public function getAnneesParc(): ?int
+    public function getAnneesParc(): ?string
     {
         return $this->anneesParc;
     }
 
-    public function setAnneesParc(int $anneesParc): static
+    public function setAnneesParc(string $anneesParc): static
     {
         $this->anneesParc = $anneesParc;
 

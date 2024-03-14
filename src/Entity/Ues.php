@@ -20,7 +20,7 @@ class Ues
     private ?string $reference = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
-    private ?int $Semestre = null;
+    private ?int $semestre = null;
 
     #[ORM\Column(length: 100)]
     private ?string $titre = null;
@@ -95,12 +95,12 @@ class Ues
 
     public function getSemestre(): ?int
     {
-        return $this->Semestre;
+        return $this->semestre;
     }
 
-    public function setSemestre(int $Semestre): static
+    public function setSemestre(int $semestre): static
     {
-        $this->Semestre = $Semestre;
+        $this->semestre = $semestre;
 
         return $this;
     }

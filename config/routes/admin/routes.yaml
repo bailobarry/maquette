@@ -33,15 +33,36 @@ supprimer_diplome:
 
 parcours :
     path : /parcours
-    controller : App\Controller\DashboardController::parcours
+    controller : App\Controller\ParcoursController::afficher
+
+ajouter_parcours :
+    path : /ajouter_parcours
+    controller : App\Controller\ParcoursController::ajouter
+
+modifier_parcours :
+    path : /modifier_parcours-{id}
+    controller : App\Controller\ParcoursController::modifier
+
+supprimer_parcours :
+    path : /supprimer_parcours-{id}
+    controller : App\Controller\ParcoursController::supprimer
 
 blocs_connaissances :
     path : /blocs_connaissances
-    controller : App\Controller\DashboardController::blocs_connaissances
+    controller : App\Controller\BlocsConnaissancesController::afficher
 
-connaissance :
-    path : /connaissance
-    controller : App\Controller\DashboardController::connaissance
+ajouter_blocs_connaissances :
+    path : /ajouter_blocs_connaissances
+    controller : App\Controller\BlocsConnaissancesController::ajouter
+
+modifier_blocs_connaissances :
+    path : /modifier_blocs_connaissances-{id}
+    controller : App\Controller\BlocsConnaissancesController::modifier
+
+supprimer_blocs_connaissances :
+    path : /supprimer_blocs_connaissances-{id}
+    controller : App\Controller\BlocsConnaissancesController::supprimer
+
 
 blocs_competences :
     path : /blocs_competences
@@ -59,14 +80,70 @@ supprimer_blocs_competences :
     path : /supprimer_blocs_competences-{id}
     controller : App\Controller\BlocsCompetencesController::supprimer
 
+
 competence :
     path : /competence
-    controller : App\Controller\DashboardController::competence
+    controller : App\Controller\CompetencesController::afficher
+
+ajouter_competence :
+    path : /ajouter_competence
+    controller : App\Controller\CompetencesController::ajouter
+
+modifier_competence :
+    path : /modifier_competence-{id}
+    controller : App\Controller\CompetencesController::modifier
+
+supprimer_competence :
+    path : /supprimer_competence-{id}
+    controller : App\Controller\CompetencesController::supprimer
+
+connaissance :
+    path : /connaissance
+    controller : App\Controller\ConnaissancesController::afficher
+
+ajouter_connaissance :
+    path : /ajouter_connaissance
+    controller : App\Controller\ConnaissancesController::ajouter
+
+modifier_connaissance :
+    path : /modifier_connaissance
+    controller : App\Controller\ConnaissancesController::modifier
+
+supprimer_connaissance :
+    path : /supprimer_connaissance
+    controller : App\Controller\ConnaissancesController::supprimer
+
 
 ues :
     path : /ues
-    controller : App\Controller\DashboardController::ues
+    controller : App\Controller\UesController::afficher
+
+ajouter_ues :
+    path : /ajouter_ues
+    controller : App\Controller\UesController::ajouter
+
+modifier_ues :
+    path : /modifier_ues-{id}
+    controller : App\Controller\UesController::modifier
+
+supprimer_ues :
+    path : /supprimer_ues-{id}
+    controller : App\Controller\UesController::supprimer
 
 mcc :
     path : /mcc
-    controller : App\Controller\DashboardController::mcc
+    controller : App\Controller\MccController::afficher
+
+ajouter_mcc :
+    path : /modifier_mcc
+    controller : App\Controller\MccController::ajouter
+
+modifier_mcc :
+    path : /modifier_mcc
+    controller : App\Controller\MccController::modifier
+
+supprimer_mcc :
+    path : /supprimer_mcc
+    controller : App\Controller\MccController::supprimer
+
+
