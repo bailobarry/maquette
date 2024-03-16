@@ -1,149 +1,149 @@
 
 dashboard : 
     path : /dashboard
-    controller: App\Controller\DashboardController::dashboard
+    controller: App\Controller\admin\DashboardController::dashboard
 
 login :
     path: /login
-    controller: App\Controller\DashboardController::login
+    controller: App\Controller\admin\DashboardController::login
 
 register :
     path : /register
-    controller: App\Controller\DashboardController::register
+    controller: App\Controller\admin\DashboardController::register
 
 utilisateur :
     path : /utilisateur
-    controller : App\Controller\DashboardController::utilisateur
+    controller : App\Controller\admin\DashboardController::utilisateur
 
 diplome :
     path : /diplome
-    controller : App\Controller\DiplomesController::afficher
+    controller : App\Controller\admin\DiplomesController::afficher
 
 ajout_diplome:
     path : /ajout_diplome
-    controller : App\Controller\DiplomesController::ajouter
+    controller : App\Controller\admin\DiplomesController::ajouter
 
 modifier_diplome:
     path : /modifier_diplome-{id}
-    controller : App\Controller\DiplomesController::modifier
+    controller : App\Controller\admin\DiplomesController::modifier
 
 supprimer_diplome:
     path : /supprimer_diplome-{id}
-    controller : App\Controller\DiplomesController::supprimer
+    controller : App\Controller\admin\DiplomesController::supprimer
 
 parcours :
     path : /parcours
-    controller : App\Controller\ParcoursController::afficher
+    controller : App\Controller\admin\ParcoursController::afficher
 
 ajouter_parcours :
     path : /ajouter_parcours
-    controller : App\Controller\ParcoursController::ajouter
+    controller : App\Controller\admin\ParcoursController::ajouter
 
 modifier_parcours :
     path : /modifier_parcours-{id}
-    controller : App\Controller\ParcoursController::modifier
+    controller : App\Controller\admin\ParcoursController::modifier
 
 supprimer_parcours :
     path : /supprimer_parcours-{id}
-    controller : App\Controller\ParcoursController::supprimer
+    controller : App\Controller\admin\ParcoursController::supprimer
 
 blocs_connaissances :
     path : /blocs_connaissances
-    controller : App\Controller\BlocsConnaissancesController::afficher
+    controller : App\Controller\admin\BlocsConnaissancesController::afficher
 
 ajouter_blocs_connaissances :
     path : /ajouter_blocs_connaissances
-    controller : App\Controller\BlocsConnaissancesController::ajouter
+    controller : App\Controller\admin\BlocsConnaissancesController::ajouter
 
 modifier_blocs_connaissances :
     path : /modifier_blocs_connaissances-{id}
-    controller : App\Controller\BlocsConnaissancesController::modifier
+    controller : App\Controller\admin\BlocsConnaissancesController::modifier
 
 supprimer_blocs_connaissances :
     path : /supprimer_blocs_connaissances-{id}
-    controller : App\Controller\BlocsConnaissancesController::supprimer
+    controller : App\Controller\admin\BlocsConnaissancesController::supprimer
 
 
 blocs_competences :
     path : /blocs_competences
-    controller : App\Controller\BlocsCompetencesController::afficher
+    controller : App\Controller\admin\BlocsCompetencesController::afficher
 
 ajouter_blocs_competences :
     path : /ajouter_blocs_competences
-    controller : App\Controller\BlocsCompetencesController::ajouter
+    controller : App\Controller\admin\BlocsCompetencesController::ajouter
 
 modifier_blocs_competences :
     path : /modifier_blocs_competences-{id}
-    controller : App\Controller\BlocsCompetencesController::modifier
+    controller : App\Controller\admin\BlocsCompetencesController::modifier
 
 supprimer_blocs_competences :
     path : /supprimer_blocs_competences-{id}
-    controller : App\Controller\BlocsCompetencesController::supprimer
+    controller : App\Controller\admin\BlocsCompetencesController::supprimer
 
 
 competence :
     path : /competence
-    controller : App\Controller\CompetencesController::afficher
+    controller : App\Controller\admin\CompetencesController::afficher
 
 ajouter_competence :
     path : /ajouter_competence
-    controller : App\Controller\CompetencesController::ajouter
+    controller : App\Controller\admin\CompetencesController::ajouter
 
 modifier_competence :
     path : /modifier_competence-{id}
-    controller : App\Controller\CompetencesController::modifier
+    controller : App\Controller\admin\CompetencesController::modifier
 
 supprimer_competence :
     path : /supprimer_competence-{id}
-    controller : App\Controller\CompetencesController::supprimer
+    controller : App\Controller\admin\CompetencesController::supprimer
 
 connaissance :
     path : /connaissance
-    controller : App\Controller\ConnaissancesController::afficher
+    controller : App\Controller\admin\ConnaissancesController::afficher
 
 ajouter_connaissance :
     path : /ajouter_connaissance
-    controller : App\Controller\ConnaissancesController::ajouter
+    controller : App\Controller\admin\ConnaissancesController::ajouter
 
 modifier_connaissance :
     path : /modifier_connaissance
-    controller : App\Controller\ConnaissancesController::modifier
+    controller : App\Controller\admin\ConnaissancesController::modifier
 
 supprimer_connaissance :
     path : /supprimer_connaissance
-    controller : App\Controller\ConnaissancesController::supprimer
+    controller : App\Controller\admin\ConnaissancesController::supprimer
 
 
 ues :
     path : /ues
-    controller : App\Controller\UesController::afficher
+    controller : App\Controller\admin\UesController::afficher
 
 ajouter_ues :
     path : /ajouter_ues
-    controller : App\Controller\UesController::ajouter
+    controller : App\Controller\admin\UesController::ajouter
 
 modifier_ues :
     path : /modifier_ues-{id}
-    controller : App\Controller\UesController::modifier
+    controller : App\Controller\admin\UesController::modifier
 
 supprimer_ues :
     path : /supprimer_ues-{id}
-    controller : App\Controller\UesController::supprimer
+    controller : App\Controller\admin\UesController::supprimer
 
 mcc :
     path : /mcc
-    controller : App\Controller\MccController::afficher
+    controller : App\Controller\admin\MccController::afficher
 
 ajouter_mcc :
     path : /modifier_mcc
-    controller : App\Controller\MccController::ajouter
+    controller : App\Controller\admin\MccController::ajouter
 
 modifier_mcc :
     path : /modifier_mcc
-    controller : App\Controller\MccController::modifier
+    controller : App\Controller\admin\MccController::modifier
 
 supprimer_mcc :
     path : /supprimer_mcc
-    controller : App\Controller\MccController::supprimer
+    controller : App\Controller\admin\MccController::supprimer
 
 
