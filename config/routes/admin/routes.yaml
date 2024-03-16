@@ -4,7 +4,7 @@ dashboard :
     controller: App\Controller\admin\DashboardController::dashboard
 
 login :
-    path: /login
+    path: /
     controller: App\Controller\admin\DashboardController::login
 
 register :
@@ -26,10 +26,14 @@ ajout_diplome:
 modifier_diplome:
     path : /modifier_diplome-{id}
     controller : App\Controller\admin\DiplomesController::modifier
+    requirements :
+        id : '\d+'
 
 supprimer_diplome:
     path : /supprimer_diplome-{id}
     controller : App\Controller\admin\DiplomesController::supprimer
+    requirements :
+        id : '\d+'
 
 parcours :
     path : /parcours
@@ -42,10 +46,14 @@ ajouter_parcours :
 modifier_parcours :
     path : /modifier_parcours-{id}
     controller : App\Controller\admin\ParcoursController::modifier
+    requirements :
+        id : '\d+'
 
 supprimer_parcours :
     path : /supprimer_parcours-{id}
     controller : App\Controller\admin\ParcoursController::supprimer
+    requirements :
+        id : '\d+'
 
 blocs_connaissances :
     path : /blocs_connaissances
@@ -58,10 +66,14 @@ ajouter_blocs_connaissances :
 modifier_blocs_connaissances :
     path : /modifier_blocs_connaissances-{id}
     controller : App\Controller\admin\BlocsConnaissancesController::modifier
+    requirements :
+        id : '\d+'
 
 supprimer_blocs_connaissances :
     path : /supprimer_blocs_connaissances-{id}
     controller : App\Controller\admin\BlocsConnaissancesController::supprimer
+    requirements :
+        id : '\d+'
 
 
 blocs_competences :
@@ -75,10 +87,14 @@ ajouter_blocs_competences :
 modifier_blocs_competences :
     path : /modifier_blocs_competences-{id}
     controller : App\Controller\admin\BlocsCompetencesController::modifier
+    requirements :
+        id : '\d+'
 
 supprimer_blocs_competences :
     path : /supprimer_blocs_competences-{id}
     controller : App\Controller\admin\BlocsCompetencesController::supprimer
+    requirements :
+        id : '\d+'
 
 
 competence :
@@ -92,10 +108,14 @@ ajouter_competence :
 modifier_competence :
     path : /modifier_competence-{id}
     controller : App\Controller\admin\CompetencesController::modifier
+    requirements :
+        id : '\d+'
 
 supprimer_competence :
     path : /supprimer_competence-{id}
     controller : App\Controller\admin\CompetencesController::supprimer
+    requirements :
+        id : '\d+'
 
 connaissance :
     path : /connaissance
@@ -125,10 +145,14 @@ ajouter_ues :
 modifier_ues :
     path : /modifier_ues-{id}
     controller : App\Controller\admin\UesController::modifier
+    requirements :
+        id : '\d+'
 
 supprimer_ues :
     path : /supprimer_ues-{id}
     controller : App\Controller\admin\UesController::supprimer
+    requirements :
+        id : '\d+'
 
 mcc :
     path : /mcc
