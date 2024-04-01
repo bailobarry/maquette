@@ -18,7 +18,7 @@ class BlocsConnaissances
     #[ORM\Column(length: 8)]
     private ?string $idConn = null;
 
-    #[ORM\Column(length: 10)]
+    #[ORM\Column(length: 100)]
     private ?string $nomBlocConn = null;
 
     #[ORM\Column(length: 255)]

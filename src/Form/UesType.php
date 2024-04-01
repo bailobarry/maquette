@@ -21,9 +21,9 @@ class UesType extends AbstractType
         $builder
             ->add('reference', TextType::class, ['label' => 'Reference l\'UE'])
             ->add('semestre', NumberType::class, ['label' => 'Numero de Semestre'])
-            ->add('titre', TextType::class, ['label' => 'titre l\'UE'])
-            ->add('ects', NumberType::class, ['label' => 'Ects l\'UE'])
-            ->add('type', TextType::class, ['label' => 'type l\'UE'])
+            ->add('titre', TextType::class, ['label' => 'Titre l\'UE'])
+            ->add('ects', NumberType::class, ['label' => 'Ects de l\'UE'])
+            ->add('type', TextType::class, ['label' => 'Type l\'UE'])
             ->add('prerequis', TextType::class, ['label' => 'Prérequis l\'UE'])
             ->add('cm', NumberType::class, ['label' => 'Nombre de cm de l\'UE'])
             ->add('td', NumberType::class, ['label' => 'Nombre de td de l\'UE'])
@@ -35,7 +35,7 @@ class UesType extends AbstractType
             
             ->add('mcc', EntityType::class, [
                 'class' => MCCRNE::class,
-                'choice_label' => 'intituleMCC',
+                'choice_label' => 'id',
             ])
             ->add('statut', EntityType::class, [
                 'class' => Statut::class,

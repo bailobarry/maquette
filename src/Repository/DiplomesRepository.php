@@ -21,28 +21,19 @@ class DiplomesRepository extends ServiceEntityRepository
         parent::__construct($registry, Diplomes::class);
     }
 
-//    /**
-//     * @return Diplomes[] Returns an array of Diplomes objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('d')
-//            ->andWhere('d.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('d.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    public function findUesDiplomes(): array
+    {
+        $qb = $this->createQueryBuilder('d')
+            ->select('ue.titre AS titreUe', 'bc.nomBlocConn', 'bcomp.nomBlocComp')
+            ->from('App\Entity\Diplomes', 'd')
+            ->leftJoin('d.parcours', 'p')
+            ->leftJoin('p.ues', 'ue')
+            ->leftJoin('ue.blocConnaissances', 'bc')
+            ->leftJoin('ue.competences', 'bcomp')
+            ->where('d.nomDip LIKE :name')
+            ->setParameter('name', 'licence%');
 
-//    public function findOneBySomeField($value): ?Diplomes
-//    {
-//        return $this->createQueryBuilder('d')
-//            ->andWhere('d.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+        return $qb->getQuery()->getResult();
+    }
+
 }

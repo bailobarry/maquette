@@ -26,6 +26,10 @@ class ParcoursType extends AbstractType
                 'class' => Diplomes::class,
                 'choice_label' => 'nomDip',
             ])
+            ->add('statut', EntityType::class, [
+                'class' => Statut::class,
+                'choice_label' => 'statut',
+            ])
             ->add('save', SubmitType::class, ['label' => 'enregistrer'])
         ;
     }

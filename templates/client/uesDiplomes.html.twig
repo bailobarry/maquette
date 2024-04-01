@@ -1,0 +1,30 @@
+{% extends "client/base.html.twig" %}
+
+{% block contenu %}
+
+<div class="main-card mb-3 card">
+    <div class="card-body">
+        <table style="width: 100%;" id="example" class="table table-hover table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Titre UE</th>
+                    <th>Bloc de Connaissances</th>
+                    <th>Bloc de Compétences</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for uesDiplome in uesDiplomes %}
+                    <tr>
+                        <td>{{ uesDiplome.titreUe }}</td>
+                        <td>{{ uesDiplome.nomBlocConn }}</td>
+                        <td>{{ uesDiplome.nomBlocComp }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
