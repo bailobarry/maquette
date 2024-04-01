@@ -14,9 +14,8 @@ class MccType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('session1', TextType::class, ['label' => 'Session 1'])
-            ->add('secondeChance', TextType::class, ['label' => 'Seconde Chance'])
-            ->add('session2', TextType::class, ['label' => 'Session 2'])
+            ->add('intituleMcc', TextType::class, ['label' => 'Intitulé'])
+            ->add('descriptionMcc', TextType::class, ['label' => 'Description'])
             ->add('save', SubmitType::class, ['label' => 'Enregistrer'])
         ;
     }

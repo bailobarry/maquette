@@ -24,11 +24,7 @@ class ParcoursType extends AbstractType
             ->add('anneesParc', TextType::class, ['label' => 'Années du parcours'])
             ->add('diplomes', EntityType::class, [
                 'class' => Diplomes::class,
-                'choice_label' => 'id',
-            ])
-            ->add('statut', EntityType::class, [
-                'class' => Statut::class,
-                'choice_label' => 'id',
+                'choice_label' => 'nomDip',
             ])
             ->add('save', SubmitType::class, ['label' => 'enregistrer'])
         ;

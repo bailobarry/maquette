@@ -3,3 +3,7 @@ admin:
     resource: routes/admin/routes.yaml
     prefix: /admin
 
+client:
+    resource: routes/client/routes.yaml
+    prefix: /client
+

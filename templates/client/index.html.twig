@@ -1,20 +1,114 @@
-{% extends 'base.html.twig' %}
+{% extends "client/base.html.twig" %}
 
-{% block title %}Hello ClientController!{% endblock %}
+{% block contenu %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/xampp/htdocs/maquette/src/Controller/ClientController.php</code></li>
-        <li>Your template at <code>C:/xampp/htdocs/maquette/templates/client/index.html.twig</code></li>
-    </ul>
+<div class="banner">
+    <script src="js/responsiveslides.min.js"></script>
+        <script>
+        // You can also use "$(window).load(function() {"
+        $(function () {
+            // Slideshow 4
+            $("#slider3").responsiveSlides({
+            auto: true,
+            pager: true,
+            nav: true,
+            speed: 500,
+            namespace: "callbacks",
+            before: function () {
+                $('.events').append("<li>before event fired.</li>");
+            },
+            after: function () {
+                $('.events').append("<li>after event fired.</li>");
+            }
+            });
+    
+        });
+        </script>
+    <!--//End-slider-script -->
+    <div  id="top" class="callbacks_container">
+        <ul class="rslides" id="slider3">
+            <li>
+                <div class="banner-bg">
+                    <div class="container">
+                        <div class="banner-info">
+                            <h3>Take the first step<span>to knowledge friends</span></h3>
+                            <p>Inspired by Brasil’s bold colors and matching up to football’s on-pitch
+                                playmakers, these kicks are ready to stand out.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="banner-bg banner-img2">
+                    <div class="container">
+                        <div class="banner-info">
+                            <h3>Stay in touch<span>Lorem Ipsum</span></h3>
+                            <p>Inspired by bold colors and matching up to football’s on-pitch
+                                playmakers, these kicks are ready to stand out.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="banner-bg banner-img">
+                    <div class="container">
+                        <div class="banner-info">
+                            <h3>therefore always<span>looks reasonable</span></h3>
+                            <p>Inspired by Brasil’s bold colors and matching up to football’s on-pitch
+                                playmakers, these Brasil’s kicks are ready to stand out.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="banner-bg">
+                    <div class="container">
+                        <div class="banner-info">
+                            <h3>dolore magna<span>eaque ipsa</span></h3>
+                            <p>Inspired by bold colors and matching up to football’s on-pitch
+                                playmakers, these kicks are ready to stand out.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="banner-bg banner-img2">
+                    <div class="container">
+                        <div class="banner-info">
+                            <h3> trivial example,<span>who chooses</span></h3>
+                            <p>Inspired by Brasil’s bold colors and matching up to football’s on-pitch
+                                playmakers, these kicks Brasil’s are ready to stand out.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
 </div>
+<br> <br>
+<div class="container">
+    <div class="row">
+        <p>
+            <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                Link with href
+            </a>
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                Button with data-bs-target
+            </button>
+        </p>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+            </div>
+        </div>
+    </div>
+</div>
+<br> <br>
+
 {% endblock %}

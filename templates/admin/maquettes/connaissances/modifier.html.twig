@@ -3,27 +3,39 @@
 
 <div class="container p-3">
     <div class="row">
-        <div class="col-12 shadow">
+        <div class="col-8 shadow p-4">
             <div class="row">
                 <br>
                 <div class="col-2"></div>
                 <div class="col-8" align="center">
-                    <h4>Ajouter une connaissance</h4>
+                    <h4>Modifier une connaissance</h4>
                 </div>
                 <div class="col-2"></div>
             </div><hr>
             {{ form_start(form) }}
             <div class="row">
-                <div class="col-md-6">
-                 
-                    {{ form_row(form.ectsConn) }}
-                    {{ form_row(form.descriptionConn) }}
-                </div>
-            </div>
-            <div class="row">
                 <div class="col">
-                   {{form_row(form.save)}}
-                    <a class="btn btn-danger" href="{{ path('connaissance') }}">Annuler</a>
+                    <div class="form-group">
+                        {{ form_row(form.blocConnaissances) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_row(form.ectsConn) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_row(form.descriptionConn) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_row(form.ues) }}
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-2 float-left d-inline">
+                            {{form_row(form.save)}}
+                        </div>
+                        <div class="col-2 float-right d-inline">
+                            <a class="btn btn-danger" href="{{ path('connaissance') }}">Annuler</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             {{ form_end(form) }}

@@ -126,12 +126,16 @@ ajouter_connaissance :
     controller : App\Controller\admin\ConnaissancesController::ajouter
 
 modifier_connaissance :
-    path : /modifier_connaissance
+    path : /modifier_connaissance-{id}
     controller : App\Controller\admin\ConnaissancesController::modifier
+    requirements :
+        id : '\d+'
 
 supprimer_connaissance :
-    path : /supprimer_connaissance
+    path : /supprimer_connaissance-{id}
     controller : App\Controller\admin\ConnaissancesController::supprimer
+    requirements :
+        id : '\d+'
 
 
 ues :
@@ -159,15 +163,19 @@ mcc :
     controller : App\Controller\admin\MccController::afficher
 
 ajouter_mcc :
-    path : /modifier_mcc
+    path : /ajouter_mcc
     controller : App\Controller\admin\MccController::ajouter
 
 modifier_mcc :
-    path : /modifier_mcc
+    path : /modifier_mcc-{id}
     controller : App\Controller\admin\MccController::modifier
+    requirements :
+        id : '\d+'
 
 supprimer_mcc :
-    path : /supprimer_mcc
+    path : /supprimer_mcc-{id}
     controller : App\Controller\admin\MccController::supprimer
+    requirements :
+        id : '\d+'
 
 

@@ -14,7 +14,6 @@
             </div><hr>
             {{form_start(formulaire)}}
                 <div class="row">
-                    
                     <div class="col-6">
                         <div class="form-group">
                             {{form_row(formulaire.nomDip)}}
@@ -25,59 +24,22 @@
                         <div class="form-group">
                             {{form_row(formulaire.anneesDip)}}
                         </div>
-                        <div class="form-group">
-                            {{form_row(formulaire.nbSemestresDip)}}
-                        </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
+                            {{form_row(formulaire.nbSemestresDip)}}
+                        </div>
+                        <div class="form-group">
                             {{form_row(formulaire.lmd)}}
-                        </div>
-                        <div class="form-group">
-                            <div class="col-6">Parcours :</div>
-                            <div class="col-10">
-                                <select name="id_parcours" id="id_parcours" class="form-control">
-                                    <option value=""></option>
-                                    <option value="par_1">PAR_1</option>
-                                    <option value="par_2">PAR_2</option>
-                                    <option value="par_3">PAR_3</option>
-                                </select>
-                                    <span class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-6">Blocs connaissances :</div>
-                            <div class="col-10">
-                                <select name="id_bloc_conn" id="id_bloc_conn" class="form-control">
-                                    <option value=""></option>
-                                    <option value="conn_1">CONN_1</option>
-                                    <option value="conn_2">CONN_2</option>
-                                    <option value="conn_3">CONN_3</option>
-                                </select>
-                                    <span class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-6">Blocs compétences :</div>
-                            <div class="col-10">
-                                <select name="id_bloc_comp" id="id_bloc_comp" class="form-control">
-                                    <option value=""></option>
-                                    <option value="comp_1">COMP_1</option>
-                                    <option value="comp_2">COMP_2</option>
-                                    <option value="comp_3">COMP_3</option>
-                                </select>
-                                    <span class="text-danger"></span>
-                            </div>
                         </div><br>
                         <div class="form-group">
                             <div class="col-2 float-left d-inline">
                                 {{form_row(formulaire.save)}}
                             </div>
-                            
                             <div class="col-2 float-right d-inline">
                                 <a class="btn btn-danger" href="{{path('diplome')}}">Annuler</a>
                             </div>
-                        </div> 
+                        </div>
                     </div>
                 </div>
             {{form_end(formulaire)}}

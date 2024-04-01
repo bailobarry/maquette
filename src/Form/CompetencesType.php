@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Competences;
 use App\Entity\Ues;
+use App\Entity\BlocsCompetences;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -19,9 +20,13 @@ class CompetencesType extends AbstractType
         $builder
             ->add('ectsComp', NumberType::class, ['label' => 'Ects du compétence '])
             ->add('descriptionComp', TextType::class, ['label' => 'Description du compétence '])
+            ->add('blocCompetences', EntityType::class, [
+                'class' => BlocsCompetences::class,
+                'choice_label' => 'nomBlocComp',
+            ])
             ->add('ues', EntityType::class, [
                 'class' => Ues::class,
-                'choice_label' => 'id', 
+                'choice_label' => 'titre',
             ])
             ->add('save' , SubmitType::class, ['label' => 'enregistrer'])
         ;

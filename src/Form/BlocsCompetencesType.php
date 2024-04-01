@@ -22,11 +22,7 @@ class BlocsCompetencesType extends AbstractType
             ->add('descriptionBlocComp', TextType::class, ['label' => 'Description du bloc '])
             ->add('diplomes', EntityType::class, [
                 'class' => Diplomes::class,
-                'choice_label' => 'id', 
-            ])
-            ->add('competences', EntityType::class, [
-                'class' => Competences::class,
-                'choice_label' => 'id', 
+                'choice_label' => 'nomDip', 
             ])
             ->add('save', SubmitType::class, ['label' => 'enregistrer'])
         ;

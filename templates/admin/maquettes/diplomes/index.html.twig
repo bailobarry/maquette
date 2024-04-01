@@ -30,6 +30,9 @@
                     <th>Années</th>
                     <th>Nombre de semestres</th>
                     <th>LMD</th>
+                    <th>Parcours</th>
+                    <th>Blocs de connaissances</th>
+                    <th>Blocs de compétences</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -42,6 +45,21 @@
                     <td>{{ diplome.anneesDip }}</td>
                     <td>{{ diplome.nbSemestresDip }}</td>
                     <td>{{ diplome.lmd }}</td>
+                    <td>
+                        {% for parcours in diplome.parcours %}
+                            {{ parcours.nomParc }}<br>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for blocConnaissance in diplome.blocConnaissances %}
+                            {{ blocConnaissance.nomBlocConn }}<br>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for blocCompetence in diplome.blocCompetences %}
+                            {{ blocCompetence.nomBlocComp }}<br>
+                        {% endfor %}
+                    </td>
                     <td>
                         <a href="{{ path('modifier_diplome', {id: diplome.id}) }}" class="btn btn-warning btn-sm text-white">
                             <i class="fa fa-edit"></i>
@@ -61,6 +79,9 @@
                     <th>Années</th>
                     <th>Nombre de semestres</th>
                     <th>LMD</th>
+                    <th>Parcours</th>
+                    <th>Blocs de connaissances</th>
+                    <th>Blocs de compétences</th>
                     <th>Action</th>
                 </tr>
             </tfoot>

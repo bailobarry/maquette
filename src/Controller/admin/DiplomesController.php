@@ -25,6 +25,14 @@ class DiplomesController extends AbstractController
     {
         $diplomes = $diplomeRepository->findAll();
 
+        $qb = $diplomeRepository->createQueryBuilder('d');
+        $qb
+            ->leftJoin('d.parcours', 'p')
+            ->leftJoin('d.blocConnaissances', 'bc')
+            ->leftJoin('d.blocCompetences', 'bco')
+        ;
+        $diplomes = $qb->getQuery()->getResult();
+
         return $this->render('admin/maquettes/diplomes/index.html.twig', [
             'diplomes' => $diplomes,
         ]);
@@ -34,6 +42,7 @@ class DiplomesController extends AbstractController
         $diplome  = new Diplomes();
         $formulaire = $this->createForm(DiplomesType::class, $diplome);
         $formulaire -> handleRequest($request);
+        
         if($formulaire -> isSubmitted() && $formulaire -> isValid()){
             $em -> persist($diplome);
             $em -> flush();

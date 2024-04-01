@@ -15,14 +15,12 @@ class MCCRNE
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 100)]
-    private ?string $session1 = null;
+    #[ORM\Column(length: 20)]
+    private ?string $intituleMcc = null;
 
     #[ORM\Column(length: 100)]
-    private ?string $secondeChance = null;
+    private ?string $descriptionMcc = null;
 
-    #[ORM\Column(length: 100)]
-    private ?string $session2 = null;
 
     #[ORM\OneToMany(mappedBy: 'mcc', targetEntity: Ues::class)]
     private Collection $ues;
@@ -37,38 +35,26 @@ class MCCRNE
         return $this->id;
     }
 
-    public function getSession1(): ?string
+    public function getIntituleMcc(): ?string
     {
-        return $this->session1;
+        return $this->intituleMcc;
     }
 
-    public function setSession1(string $session1): static
+    public function setIntituleMcc(string $intituleMcc): static
     {
-        $this->session1 = $session1;
+        $this->intituleMcc = $intituleMcc;
 
         return $this;
     }
 
-    public function getSecondeChance(): ?string
+    public function getdescriptionMcc(): ?string
     {
-        return $this->secondeChance;
+        return $this->descriptionMcc;
     }
 
-    public function setSecondeChance(string $secondeChance): static
+    public function setdescriptionMcc(string $descriptionMcc): static
     {
-        $this->secondeChance = $secondeChance;
-
-        return $this;
-    }
-
-    public function getSession2(): ?string
-    {
-        return $this->session2;
-    }
-
-    public function setSession2(string $session2): static
-    {
-        $this->session2 = $session2;
+        $this->descriptionMcc = $descriptionMcc;
 
         return $this;
     }

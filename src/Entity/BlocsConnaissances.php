@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\BlocsConnaissancesRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BlocsConnaissancesRepository::class)]
@@ -25,8 +27,13 @@ class BlocsConnaissances
     #[ORM\ManyToOne(inversedBy: 'blocConnaissances')]
     private ?Diplomes $diplomes = null;
 
-    #[ORM\ManyToOne(inversedBy: 'blocConnaissances')]
-    private ?Connaissances $connaissances = null;
+    #[ORM\OneToMany(targetEntity: Connaissances::class, mappedBy: 'blocConnaissances')]
+    private Collection $connaissances;
+
+    public function __construct()
+    {
+        $this->connaissances = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -81,15 +88,35 @@ class BlocsConnaissances
         return $this;
     }
 
-    public function getConnaissances(): ?Connaissances
+    /**
+     * @return Collection<int, Connaissances>
+     */
+    public function getConnaissances(): Collection
     {
         return $this->connaissances;
     }
 
-    public function setConnaissances(?Connaissances $connaissances): static
+    public function addConnaissance(Connaissances $connaissance): static
     {
-        $this->connaissances = $connaissances;
+        if (!$this->connaissances->contains($connaissance)) {
+            $this->connaissances->add($connaissance);
+            $connaissance->setBlocConnaissances($this);
+        }
 
         return $this;
     }
+
+    public function removeConnaissance(Connaissances $connaissance): static
+    {
+        if ($this->connaissances->removeElement($connaissance)) {
+            // set the owning side to null (unless already changed)
+            if ($connaissance->getBlocConnaissances() === $this) {
+                $connaissance->setBlocConnaissances(null);
+            }
+        }
+
+        return $this;
+    }
+
+
 }

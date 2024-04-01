@@ -1,0 +1,5 @@
+
+client : 
+    path : /
+    controller: App\Controller\ClientController::index
+

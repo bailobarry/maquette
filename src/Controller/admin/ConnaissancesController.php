@@ -26,6 +26,13 @@ class ConnaissancesController extends AbstractController
     {
         $Connaissances = $connaissanceRepository->findAll();
 
+        $qb = $connaissanceRepository->createQueryBuilder('conn');
+        $qb
+            ->leftJoin('conn.blocConnaissances', 'bc')
+            ->leftJoin('conn.ues', 'ues')
+        ;
+        $Connaissances = $qb->getQuery()->getResult();
+
         return $this->render('admin/maquettes/connaissances/index.html.twig', [
             'Connaissances' => $Connaissances,
         ]);
@@ -43,7 +50,7 @@ class ConnaissancesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($Connaissance);
             $em->flush();
-            $this ->addFlash('Success', 'Connaissance enregistré avec succès.');
+            $this ->addFlash('Success', 'La connaissance enregistré avec succès.');
             return $this->redirectToRoute('connaissance');
         }
 
@@ -51,7 +58,6 @@ class ConnaissancesController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
 
     public function modifier(Request $request, EntityManagerInterface $em, Connaissances $Connaissance)
     {
@@ -61,12 +67,12 @@ class ConnaissancesController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em->flush();
-            $this -> addFlash('success', 'Connaissance a été modifié avec succès.');
+            $this -> addFlash('success', 'La connaissance a été modifié avec succès.');
             return $this->redirectToRoute('connaissance');
         }
 
         return $this->render('admin/maquettes/connaissances/modifier.html.twig', [
-            'Connaissance'=>$Connaissance, 'form' => $form,
+            'Comptence'=>$Connaissance, 'form' => $form,
         ]);
     }
 
@@ -74,7 +80,7 @@ class ConnaissancesController extends AbstractController
     public function supprimer (Connaissances $Connaissance, EntityManagerInterface $em){
         $em -> remove($Connaissance);
         $em -> flush();
-        $this -> addFlash('success', 'Connaissance a été supprimé avec succès.');
+        $this -> addFlash('success', 'La connaissance a été supprimé avec succès.');
         return $this->redirectToRoute('connaissance');
     }
 }

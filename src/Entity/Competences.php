@@ -22,16 +22,12 @@ class Competences
     #[ORM\Column(length: 255)]
     private ?string $descriptionComp = null;
 
-    #[ORM\OneToMany(mappedBy: 'competences', targetEntity: BlocsCompetences::class)]
-    private Collection $blocCompetences;
-
+    
     #[ORM\ManyToOne(inversedBy: 'competences')]
     private ?Ues $ues = null;
 
-    public function __construct()
-    {
-        $this->blocCompetences = new ArrayCollection();
-    }
+    #[ORM\ManyToOne(inversedBy: 'competences')]
+    private ?BlocsCompetences $blocCompetences = null;
 
     public function getId(): ?int
     {
@@ -62,36 +58,6 @@ class Competences
         return $this;
     }
 
-    /**
-     * @return Collection<int, BlocsCompetences>
-     */
-    public function getBlocCompetences(): Collection
-    {
-        return $this->blocCompetences;
-    }
-
-    public function addBlocCompetence(BlocsCompetences $blocCompetence): static
-    {
-        if (!$this->blocCompetences->contains($blocCompetence)) {
-            $this->blocCompetences->add($blocCompetence);
-            $blocCompetence->setCompetences($this);
-        }
-
-        return $this;
-    }
-
-    public function removeBlocCompetence(BlocsCompetences $blocCompetence): static
-    {
-        if ($this->blocCompetences->removeElement($blocCompetence)) {
-            // set the owning side to null (unless already changed)
-            if ($blocCompetence->getCompetences() === $this) {
-                $blocCompetence->setCompetences(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getUes(): ?Ues
     {
         return $this->ues;
@@ -100,6 +66,18 @@ class Competences
     public function setUes(?Ues $ues): static
     {
         $this->ues = $ues;
+
+        return $this;
+    }
+
+    public function getBlocCompetences(): ?BlocsCompetences
+    {
+        return $this->blocCompetences;
+    }
+
+    public function setBlocCompetences(?BlocsCompetences $blocCompetences): static
+    {
+        $this->blocCompetences = $blocCompetences;
 
         return $this;
     }

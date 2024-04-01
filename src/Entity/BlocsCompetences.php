@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\BlocsCompetencesRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BlocsCompetencesRepository::class)]
@@ -25,8 +27,13 @@ class BlocsCompetences
     #[ORM\ManyToOne(inversedBy: 'blocCompetences')]
     private ?Diplomes $diplomes = null;
 
-    #[ORM\ManyToOne(inversedBy: 'blocCompetences')]
-    private ?Competences $competences = null;
+    #[ORM\OneToMany(targetEntity: Competences::class, mappedBy: 'blocCompetences')]
+    private Collection $competences;
+
+    public function __construct()
+    {
+        $this->competences = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -81,15 +88,34 @@ class BlocsCompetences
         return $this;
     }
 
-    public function getCompetences(): ?Competences
+    /**
+     * @return Collection<int, Competences>
+     */
+    public function getCompetences(): Collection
     {
         return $this->competences;
     }
 
-    public function setCompetences(?Competences $competences): static
+    public function addCompetence(Competences $competence): static
     {
-        $this->competences = $competences;
+        if (!$this->competences->contains($competence)) {
+            $this->competences->add($competence);
+            $competence->setBlocCompetences($this);
+        }
 
         return $this;
     }
+
+    public function removeCompetence(Competences $competence): static
+    {
+        if ($this->competences->removeElement($competence)) {
+            // set the owning side to null (unless already changed)
+            if ($competence->getBlocCompetences() === $this) {
+                $competence->setBlocCompetences(null);
+            }
+        }
+
+        return $this;
+    }
+
 }

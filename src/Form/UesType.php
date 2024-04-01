@@ -32,17 +32,14 @@ class UesType extends AbstractType
             ->add('groupeCM', NumberType::class, ['label' => 'Nombre de groupe de CM'])
             ->add('groupeTD', NumberType::class, ['label' => 'Nombre de groupe TD'])
             ->add('groupeTP', NumberType::class, ['label' => 'Nombre de groupe TP'])
-            ->add('utilisateurs', EntityType::class, [
-                'class' => Utilisateurs::class,
-                'choice_label' => 'id',
-            ])
+            
             ->add('mcc', EntityType::class, [
                 'class' => MCCRNE::class,
-                'choice_label' => 'id',
+                'choice_label' => 'intituleMCC',
             ])
             ->add('statut', EntityType::class, [
                 'class' => Statut::class,
-                'choice_label' => 'id',
+                'choice_label' => 'statut',
             ])
             ->add('save', SubmitType::class, ['label' => 'enregistrer'])
         ;

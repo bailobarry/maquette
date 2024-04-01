@@ -3,7 +3,7 @@
 
 <div class="container p-3">
     <div class="row">
-        <div class="col-12 shadow">
+        <div class="col-8 shadow p-4">
             <div class="row">
                 <br>
                 <div class="col-2"></div>
@@ -14,16 +14,28 @@
             </div><hr>
             {{ form_start(form) }}
             <div class="row">
-                <div class="col-md-6">
-                    {{ form_row(form.idComp) }}
-                    {{ form_row(form.nomBlocComp) }}
-                    {{ form_row(form.descriptionBlocComp) }}
-                </div>
-            </div>
-            <div class="row">
                 <div class="col">
-                   {{form_row(form.save)}}
-                    <a class="btn btn-danger" href="{{ path('blocs_competences') }}">Annuler</a>
+                    <div class="form-group">
+                        {{ form_row(form.idComp) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_row(form.nomBlocComp) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_row(form.descriptionBlocComp) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_row(form.diplomes) }}
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-2 float-left d-inline">
+                            {{form_row(form.save)}}
+                        </div>
+                        <div class="col-2 float-right d-inline">
+                            <a class="btn btn-danger" href="{{ path('blocs_competences') }}">Annuler</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             {{ form_end(form) }}

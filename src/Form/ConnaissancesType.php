@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\Connaissances;
 use App\Entity\Ues;
+use App\Entity\BlocsConnaissances;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -19,9 +21,13 @@ class ConnaissancesType extends AbstractType
         $builder
             ->add('ectsConn', NumberType::class, ['label' => 'Ects du connaissance '])
             ->add('descriptionConn', TextType::class, ['label' => 'Description du connaissance '])
+            ->add('blocConnaissances', EntityType::class, [
+                'class' => BlocsConnaissances::class,
+                'choice_label' => 'nomBlocConn',
+            ])
             ->add('ues', EntityType::class, [
                 'class' => Ues::class,
-                'choice_label' => 'id', 
+                'choice_label' => 'titre',
             ])
             ->add('save' , SubmitType::class, ['label' => 'enregistrer'])
         ;

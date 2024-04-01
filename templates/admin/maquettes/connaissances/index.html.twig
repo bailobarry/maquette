@@ -24,6 +24,7 @@
             <thead>
                 <tr>
                     <th>Identifiant du bloc</th>
+                    <th>Blocs de Connaissances</th>
                     <th>Ects du connaissance</th>
                     <th>Description du connaissance</th>
                     <th>Action</th>
@@ -33,6 +34,11 @@
                 {% for Connaissance in Connaissances %}
                 <tr>
                     <td>{{ Connaissance.id }}</td>
+                    <td>
+                        {% for blocConnaissance in Connaissance.blocConnaissances %}
+                            {{ blocConnaissance.nomBlocConn }}<br>
+                        {% endfor %}
+                    </td>
                     <td>{{ Connaissance.ectsConn }}</td>
                     <td>{{ Connaissance.descriptionConn }}</td>
                     <td>
@@ -49,6 +55,7 @@
             <tfoot>
                 <tr>
                     <th>Identifiant du bloc</th>
+                    <th>Blocs de Connaissances</th>
                     <th>Ects du connaissance</th>
                     <th>Description du connaissance</th>
                     <th>Action</th>

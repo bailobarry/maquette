@@ -3,43 +3,79 @@
 
 <div class="container p-3">
     <div class="row">
-        <div class="col-12 shadow">
+        <div class="col-12 shadow p-4">
             <div class="row">
                 <br>
                 <div class="col-2"></div>
                 <div class="col-8" align="center">
-                    <h4>Gestion des UES</h4>
+                    <h4>Diplômes</h4>
                 </div>
                 <div class="col-2"></div>
             </div><hr>
-            {{ form_start(form) }}
-            <div class="row">
-                <div class="col-md-6">
-                    {{ form_row(form.reference) }}
-                    {{ form_row(form.semestre) }}
-                    {{ form_row(form.titre) }}
-                    {{ form_row(form.ects) }}
-                    {{ form_row(form.type) }}
-                    {{ form_row(form.prerequis) }}
-                    {{ form_row(form.cm) }}
-                    {{ form_row(form.td) }}
-                    {{ form_row(form.tp) }}
-                    {{ form_row(form.effectif) }}
-                    {{ form_row(form.groupeCM) }}
-                    {{ form_row(form.groupeTD) }}
-                    {{ form_row(form.groupeTP) }}
-
+            {{form_start(form)}}
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            {{ form_row(form.semestre) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_row(form.reference) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_row(form.titre) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_row(form.ects) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_row(form.type) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_row(form.statut) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_row(form.prerequis) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_row(form.cm) }}
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            {{ form_row(form.td) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_row(form.tp) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_row(form.effectif) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_row(form.groupeCM) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_row(form.groupeTD) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_row(form.groupeTP) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_row(form.mcc) }}
+                        </div><br>
+                        <div class="form-group">
+                            <div class="col-2 float-left d-inline">
+                                {{form_row(form.save)}}
+                            </div>
+                            <div class="col-2 float-right d-inline">
+                                <a class="btn btn-danger" href="{{ path('ues') }}">Annuler</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                   {{form_row(form.save)}}
-                    <a class="btn btn-danger" href="{{ path('ues') }}">Annuler</a>
-                </div>
-            </div>
-            {{ form_end(form) }}
+            {{form_end(form)}}
         </div>
     </div>
 </div>
+
 
 {% endblock %}

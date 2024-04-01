@@ -23,9 +23,9 @@
         <table style="width: 100%;" id="example" class="table table-hover table-striped table-bordered">
             <thead>
                 <tr>
-                    <th>Session 1</th>
-                    <th>Seconde chance</th>
-                    <th>Session 2</th>
+                    <th>Identifiant</th>
+                    <th>Intitulé</th>
+                    <th>Description</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -33,9 +33,8 @@
                 {% for mcc in mcc %}
                 <tr>
                     <td>{{ mcc.id }}</td>
-                    <td>{{ mcc.session1 }}</td>
-                    <td>{{ mcc.secondeChance }}</td>
-                    <td>{{ mcc.seconde2 }}</td>
+                    <td>{{ mcc.intituleMcc }}</td>
+                    <td>{{ mcc.descriptionMcc }}</td>
                     
                     <td>
                         <a href="{{ path('modifier_mcc', {id: mcc.id}) }}" class="btn btn-warning btn-sm text-white">
@@ -50,9 +49,9 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <th>Session 1</th>
-                    <th>Seconde chance</th>
-                    <th>Session 2</th>
+                    <th>Identifiant</th>
+                    <th>Intitulé</th>
+                    <th>Description</th>
                     <th>Action</th>
                     
                 </tr>

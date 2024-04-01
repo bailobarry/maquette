@@ -22,16 +22,11 @@ class Connaissances
     #[ORM\Column(length: 255)]
     private ?string $descriptionConn = null;
 
-    #[ORM\OneToMany(mappedBy: 'connaissances', targetEntity: BlocsConnaissances::class)]
-    private Collection $blocConnaissances;
-
     #[ORM\ManyToOne(inversedBy: 'connaissances')]
     private ?Ues $ues = null;
 
-    public function __construct()
-    {
-        $this->blocConnaissances = new ArrayCollection();
-    }
+    #[ORM\ManyToOne(inversedBy: 'connaissances')]
+    private ?BlocsConnaissances $blocConnaissances = null;
 
     public function getId(): ?int
     {
@@ -62,35 +57,7 @@ class Connaissances
         return $this;
     }
 
-    /**
-     * @return Collection<int, BlocsConnaissances>
-     */
-    public function getBlocConnaissances(): Collection
-    {
-        return $this->blocConnaissances;
-    }
-
-    public function addBlocConnaissance(BlocsConnaissances $blocConnaissance): static
-    {
-        if (!$this->blocConnaissances->contains($blocConnaissance)) {
-            $this->blocConnaissances->add($blocConnaissance);
-            $blocConnaissance->setConnaissances($this);
-        }
-
-        return $this;
-    }
-
-    public function removeBlocConnaissance(BlocsConnaissances $blocConnaissance): static
-    {
-        if ($this->blocConnaissances->removeElement($blocConnaissance)) {
-            // set the owning side to null (unless already changed)
-            if ($blocConnaissance->getConnaissances() === $this) {
-                $blocConnaissance->setConnaissances(null);
-            }
-        }
-
-        return $this;
-    }
+    
 
     public function getUes(): ?Ues
     {
@@ -103,4 +70,17 @@ class Connaissances
 
         return $this;
     }
+
+    public function getBlocConnaissances(): ?BlocsConnaissances
+    {
+        return $this->blocConnaissances;
+    }
+
+    public function setBlocConnaissances(?BlocsConnaissances $blocConnaissances): static
+    {
+        $this->blocConnaissances = $blocConnaissances;
+
+        return $this;
+    }
+
 }
