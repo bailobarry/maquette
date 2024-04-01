@@ -23,15 +23,17 @@ class DiplomesRepository extends ServiceEntityRepository
 
     public function findUesDiplomes(): array
     {
-        $qb = $this->createQueryBuilder('d')
-            ->select('ue.titre AS titreUe', 'bc.nomBlocConn', 'bcomp.nomBlocComp')
-            ->from('App\Entity\Diplomes', 'd')
-            ->leftJoin('d.parcours', 'p')
-            ->leftJoin('p.ues', 'ue')
-            ->leftJoin('ue.blocConnaissances', 'bc')
-            ->leftJoin('ue.competences', 'bcomp')
-            ->where('d.nomDip LIKE :name')
-            ->setParameter('name', 'licence%');
+        $qb = $this->createQueryBuilder('d');
+
+        $qb->select('ue.titre', 'c.descriptionConn', 'comp.descriptionComp')
+            ->from(Diplomes::class, 'dip')
+            ->leftJoin('dip.parcours', 'p')
+            ->leftJoin('p.statut', 's')
+            ->leftJoin('s.ues', 'ue')
+            ->leftJoin('ue.connaissances', 'c')
+            ->leftJoin('ue.competences', 'competences')
+            ->where('d.nomDip LIKE :licence')
+            ->setParameter('licence', '%licence%');
 
         return $qb->getQuery()->getResult();
     }

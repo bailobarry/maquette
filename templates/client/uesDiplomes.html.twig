@@ -8,16 +8,16 @@
             <thead>
                 <tr>
                     <th>Titre UE</th>
-                    <th>Bloc de Connaissances</th>
-                    <th>Bloc de Compétences</th>
+                    <th>Connaissances</th>
+                    <th>Compétences</th>
                 </tr>
             </thead>
             <tbody>
                 {% for uesDiplome in uesDiplomes %}
                     <tr>
                         <td>{{ uesDiplome.titreUe }}</td>
-                        <td>{{ uesDiplome.nomBlocConn }}</td>
-                        <td>{{ uesDiplome.nomBlocComp }}</td>
+                        <td>{{ uesDiplome.descriptionConn }}</td>
+                        <td>{{ uesDiplome.descriptionComp }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
