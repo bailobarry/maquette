@@ -72,14 +72,14 @@ class Ues
     #[ORM\JoinColumn(onDelete: 'CASCADE')]
     private ?Statut $statut = null;
 
-    #[ORM\ManyToMany(targetEntity: Parcours::class, cascade: ["persist"], inversedBy: 'ues')]
-    private Collection $parcours;
+    #[ORM\ManyToOne(cascade: ["persist"], inversedBy: 'ues')]
+    #[ORM\JoinColumn(onDelete: 'CASCADE')]
+    private ?Parcours $parcours = null;
 
     public function __construct()
     {
         $this->competences = new ArrayCollection();
         $this->connaissances = new ArrayCollection();
-        $this->parcours = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -339,27 +339,17 @@ class Ues
         return $this;
     }
 
-    /**
-     * @return Collection<int, Parcours>
-     */
-    public function getParcours(): Collection
+    public function getParcours(): ?Parcours
     {
         return $this->parcours;
     }
 
-    public function addParcour(Parcours $parcour): static
+    public function setParcours(?Parcours $parcours): static
     {
-        if (!$this->parcours->contains($parcour)) {
-            $this->parcours->add($parcour);
-        }
+        $this->parcours = $parcours;
 
         return $this;
     }
 
-    public function removeParcour(Parcours $parcour): static
-    {
-        $this->parcours->removeElement($parcour);
-
-        return $this;
-    }
+    
 }

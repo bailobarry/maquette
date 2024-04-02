@@ -32,7 +32,7 @@ class Parcours
     #[ORM\ManyToOne(cascade: ["persist"], inversedBy: 'parcours')]
     private ?Statut $statut = null;
 
-    #[ORM\ManyToMany(targetEntity: Ues::class, cascade: ["persist"], mappedBy: 'parcours')]
+    #[ORM\OneToMany(targetEntity: Ues::class, mappedBy: 'parcours')]
     private Collection $ues;
 
     public function __construct()
@@ -117,7 +117,7 @@ class Parcours
     {
         if (!$this->ues->contains($ue)) {
             $this->ues->add($ue);
-            $ue->addParcour($this);
+            $ue->setParcours($this);
         }
 
         return $this;
@@ -126,9 +126,13 @@ class Parcours
     public function removeUe(Ues $ue): static
     {
         if ($this->ues->removeElement($ue)) {
-            $ue->removeParcour($this);
+            // set the owning side to null (unless already changed)
+            if ($ue->getParcours() === $this) {
+                $ue->setParcours(null);
+            }
         }
 
         return $this;
     }
+
 }

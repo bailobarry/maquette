@@ -19,21 +19,7 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class UesType extends AbstractType
 {
-    private $em;
 
-    public function __construct(EntityManagerInterface $em)
-    {
-        $this->em = $em;
-    }
-    private function getParcoursChoices(): array
-    {
-        $parcours = $this->em->getRepository(Parcours::class)->findAll();
-        $choices = [];
-        foreach ($parcours as $parcours) {
-            $choices[] = $parcours->getNomParc(); // Assuming getNomParc() returns the name of the parcours
-        }
-        return $choices;
-    }
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -56,11 +42,9 @@ class UesType extends AbstractType
                 'choice_label' => 'id',
                 'label' => 'Modalité de controle',
             ])
-            ->add('parcours', ChoiceType::class, [
-                'choices' => $this->getParcoursChoices(),
-                'choice_label' => function ($choice) {
-                  return $choice;
-                },
+            ->add('parcours', EntityType::class, [
+                'class' => Parcours::class,
+                'choice_label' => 'nomParc',
                 'label' => 'Parcours de l\'UE',
               ])
             ->add('statut', EntityType::class, [
