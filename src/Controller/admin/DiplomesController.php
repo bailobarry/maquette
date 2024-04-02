@@ -3,6 +3,7 @@
 namespace App\Controller\admin;
 
 use App\Entity\Diplomes;
+use App\Entity\Ues;
 use App\Form\DiplomesType;
 use App\Repository\DiplomesRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -68,5 +69,45 @@ class DiplomesController extends AbstractController
         $em -> flush();
         $this -> addFlash('success', 'Le diplôme a été supprimé avec succès.');
         return $this->redirectToRoute('diplome');
+    }
+
+    public function uesParLicence(EntityManagerInterface $em): Response
+    {
+        $diplomes = $em->getRepository(Diplomes::class)->findByNomDip('licence');
+
+        $ues = [];
+        foreach ($diplomes as $diplome) {
+            foreach ($diplome->getParcours() as $parcours) {
+                foreach ($parcours->getUes() as $ue) {
+                    $ues[] = [
+                        'titre' => $ue->getTitre(),
+                        'connaissances' => $this->getUeConnaissances($ue),
+                        'competences' => $this->getUeCompetences($ue),
+                    ];
+                }
+            }
+        }
+
+        return $this->render('client/uesDiplomes.html.twig', [
+            'ues' => $ues,
+        ]);
+    }
+
+    private function getUeConnaissances(Ues $ue): array
+    {
+        $connaissances = [];
+        foreach ($ue->getConnaissances() as $connaissance) {
+            $connaissances[] = $connaissance->getDescriptionConn();
+        }
+        return $connaissances;
+    }
+
+    private function getUeCompetences(Ues $ue): array
+    {
+        $competences = [];
+        foreach ($ue->getCompetences() as $competence) {
+            $competences[] = $competence->getDescriptionComp();
+        }
+        return $competences;
     }
 }

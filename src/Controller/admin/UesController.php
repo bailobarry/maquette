@@ -5,7 +5,9 @@ namespace App\Controller\admin;
 use App\Entity\Ues;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Form\UesType;
+use App\Entity\Parcours;
 use App\Repository\UesRepository;
+use App\Repository\DiplomesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,7 +33,7 @@ class UesController extends AbstractController
         ]);
     }
 
-    public function ajouter(Request $request, EntityManagerInterface $em)
+    /*public function ajouter(Request $request, EntityManagerInterface $em)
     {
         $ues = new Ues();
 
@@ -43,6 +45,27 @@ class UesController extends AbstractController
             $em->persist($ues);
             $em->flush();
             $this ->addFlash('Success', 'l\'UE enregistré avec succès.');
+            return $this->redirectToRoute('ues');
+        }
+
+        return $this->render('admin/maquettes/ues/ajouter.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }*/
+
+    public function ajouter(Request $request, EntityManagerInterface $em)
+    {
+        $ues = new Ues();
+        $form = $this->createForm(UesType::class, $ues);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $parcours = $form->get('parcours')->getData();
+            $ues->addParcour($parcours);
+
+            $em->persist($ues);
+            $em->flush();
+            $this->addFlash('Success', 'l\'UE enregistré avec succès.');
             return $this->redirectToRoute('ues');
         }
 
@@ -74,6 +97,7 @@ class UesController extends AbstractController
         $this -> addFlash('success', 'L\'UE a été supprimé avec succès.');
         return $this->redirectToRoute('ues');
     }
+
 }
 
 

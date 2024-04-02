@@ -23,10 +23,12 @@ class CompetencesType extends AbstractType
             ->add('blocCompetences', EntityType::class, [
                 'class' => BlocsCompetences::class,
                 'choice_label' => 'nomBlocComp',
+                'label' => 'Blocs de compétences',
             ])
             ->add('ues', EntityType::class, [
                 'class' => Ues::class,
                 'choice_label' => 'titre',
+                'label' => 'Selectionner une UE',
             ])
             ->add('save' , SubmitType::class, ['label' => 'enregistrer'])
         ;

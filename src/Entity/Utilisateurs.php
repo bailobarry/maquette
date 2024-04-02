@@ -27,13 +27,15 @@ class Utilisateurs
     #[ORM\Column(length: 15)]
     private ?string $password = null;
 
-    #[ORM\ManyToOne(inversedBy: 'utilisateurs')]
+    #[ORM\ManyToOne(cascade: ["persist"], inversedBy: 'utilisateurs')]
+    #[ORM\JoinColumn(onDelete: 'CASCADE')]
     private ?Diplomes $diplomes = null;
 
     #[ORM\OneToMany(mappedBy: 'utilisateurs', targetEntity: Ues::class)]
     private Collection $ues;
 
-    #[ORM\ManyToOne(inversedBy: 'utilisateurs')]
+    #[ORM\ManyToOne(cascade: ["persist"], inversedBy: 'utilisateurs')]
+    #[ORM\JoinColumn(onDelete: 'CASCADE')]
     private ?Role $role = null;
 
     public function __construct()

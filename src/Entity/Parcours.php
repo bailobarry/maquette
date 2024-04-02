@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ParcoursRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -23,11 +25,20 @@ class Parcours
     #[ORM\Column(type: Types::SMALLINT)]
     private ?string $anneesParc = null;
 
-    #[ORM\ManyToOne(inversedBy: 'parcours')]
+    #[ORM\ManyToOne(cascade: ["persist"], inversedBy: 'parcours')]
+    #[ORM\JoinColumn(onDelete: 'CASCADE')]
     private ?Diplomes $diplomes = null;
 
-    #[ORM\ManyToOne(inversedBy: 'parcours')]
+    #[ORM\ManyToOne(cascade: ["persist"], inversedBy: 'parcours')]
     private ?Statut $statut = null;
+
+    #[ORM\ManyToMany(targetEntity: Ues::class, cascade: ["persist"], mappedBy: 'parcours')]
+    private Collection $ues;
+
+    public function __construct()
+    {
+        $this->ues = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -90,6 +101,33 @@ class Parcours
     public function setStatut(?Statut $statut): static
     {
         $this->statut = $statut;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Ues>
+     */
+    public function getUes(): Collection
+    {
+        return $this->ues;
+    }
+
+    public function addUe(Ues $ue): static
+    {
+        if (!$this->ues->contains($ue)) {
+            $this->ues->add($ue);
+            $ue->addParcour($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUe(Ues $ue): static
+    {
+        if ($this->ues->removeElement($ue)) {
+            $ue->removeParcour($this);
+        }
 
         return $this;
     }

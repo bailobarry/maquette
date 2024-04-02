@@ -64,16 +64,22 @@ class Ues
     #[ORM\OneToMany(mappedBy: 'ues', targetEntity: Connaissances::class)]
     private Collection $connaissances;
 
-    #[ORM\ManyToOne(inversedBy: 'ues')]
+    #[ORM\ManyToOne(cascade: ["persist"], inversedBy: 'ues')]
+    #[ORM\JoinColumn(onDelete: 'CASCADE')]
     private ?MCCRNE $mcc = null;
 
-    #[ORM\ManyToOne(inversedBy: 'ues')]
+    #[ORM\ManyToOne(cascade: ["persist"], inversedBy: 'ues')]
+    #[ORM\JoinColumn(onDelete: 'CASCADE')]
     private ?Statut $statut = null;
+
+    #[ORM\ManyToMany(targetEntity: Parcours::class, cascade: ["persist"], inversedBy: 'ues')]
+    private Collection $parcours;
 
     public function __construct()
     {
         $this->competences = new ArrayCollection();
         $this->connaissances = new ArrayCollection();
+        $this->parcours = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -329,6 +335,30 @@ class Ues
     public function setStatut(?Statut $statut): static
     {
         $this->statut = $statut;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Parcours>
+     */
+    public function getParcours(): Collection
+    {
+        return $this->parcours;
+    }
+
+    public function addParcour(Parcours $parcour): static
+    {
+        if (!$this->parcours->contains($parcour)) {
+            $this->parcours->add($parcour);
+        }
+
+        return $this;
+    }
+
+    public function removeParcour(Parcours $parcour): static
+    {
+        $this->parcours->removeElement($parcour);
 
         return $this;
     }

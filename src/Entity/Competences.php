@@ -23,10 +23,12 @@ class Competences
     private ?string $descriptionComp = null;
 
     
-    #[ORM\ManyToOne(inversedBy: 'competences')]
+    #[ORM\ManyToOne(cascade: ["persist"], inversedBy: 'competences')]
+    #[ORM\JoinColumn(onDelete: 'CASCADE')]
     private ?Ues $ues = null;
 
-    #[ORM\ManyToOne(inversedBy: 'competences')]
+    #[ORM\ManyToOne(cascade: ["persist"], inversedBy: 'competences')]
+    #[ORM\JoinColumn(onDelete: 'CASCADE')]
     private ?BlocsCompetences $blocCompetences = null;
 
     public function getId(): ?int

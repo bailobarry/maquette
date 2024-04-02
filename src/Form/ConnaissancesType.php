@@ -24,10 +24,12 @@ class ConnaissancesType extends AbstractType
             ->add('blocConnaissances', EntityType::class, [
                 'class' => BlocsConnaissances::class,
                 'choice_label' => 'nomBlocConn',
+                'label' => 'Blocs de connaissances',
             ])
             ->add('ues', EntityType::class, [
                 'class' => Ues::class,
                 'choice_label' => 'titre',
+                'label' => 'Selectionner une UE',
             ])
             ->add('save' , SubmitType::class, ['label' => 'enregistrer'])
         ;

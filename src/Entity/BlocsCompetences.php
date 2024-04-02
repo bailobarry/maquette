@@ -24,7 +24,8 @@ class BlocsCompetences
     #[ORM\Column(length: 255)]
     private ?string $descriptionBlocComp = null;
 
-    #[ORM\ManyToOne(inversedBy: 'blocCompetences')]
+    #[ORM\ManyToOne(cascade: ["persist"], inversedBy: 'blocCompetences')]
+    #[ORM\JoinColumn(onDelete: 'CASCADE')]
     private ?Diplomes $diplomes = null;
 
     #[ORM\OneToMany(targetEntity: Competences::class, mappedBy: 'blocCompetences')]

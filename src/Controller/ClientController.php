@@ -15,13 +15,6 @@ class ClientController extends AbstractController
         return $this-> render('client/index.html.twig');
     }
 
-    public function listeUesDiplomes(DiplomesRepository $diplomesRepository): Response
-    {
-        $uesDiplomes = $diplomesRepository->findUesDiplomes();
-
-        return $this->render('client/descriptions.html.twig', [
-            'uesDiplomes' => $uesDiplomes,
-        ]);
-    }
+    
 
 }

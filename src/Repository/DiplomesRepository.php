@@ -21,21 +21,20 @@ class DiplomesRepository extends ServiceEntityRepository
         parent::__construct($registry, Diplomes::class);
     }
 
-    public function findUesDiplomes(): array
+    public function findUesByLicenceName(): array
     {
-        $qb = $this->createQueryBuilder('d');
-
-        $qb->select('ue.titre', 'c.descriptionConn', 'comp.descriptionComp')
-            ->from(Diplomes::class, 'dip')
-            ->leftJoin('dip.parcours', 'p')
-            ->leftJoin('p.statut', 's')
-            ->leftJoin('s.ues', 'ue')
-            ->leftJoin('ue.connaissances', 'c')
-            ->leftJoin('ue.competences', 'competences')
+        $qb = $this->createQueryBuilder('d')
+            ->select('d', 'parc', 'ue', 'comp', 'conn')
+            ->innerJoin('d.parcours', 'parc')
+            ->innerJoin('parc.statut', 'statut')
+            ->innerJoin('statut.ues', 'ue')
+            ->leftJoin('ue.competences', 'comp')
+            ->leftJoin('ue.connaissances', 'conn')
             ->where('d.nomDip LIKE :licence')
             ->setParameter('licence', '%licence%');
 
         return $qb->getQuery()->getResult();
     }
+
 
 }

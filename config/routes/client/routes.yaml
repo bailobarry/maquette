@@ -3,7 +3,7 @@ client :
     path : /
     controller: App\Controller\ClientController::index
 
-liste_ues_par_diplomes : 
-    path : /liste_ues_par_diplomes
-    controller: App\Controller\ClientController::listeUesDiplomes
+liste_ues_par_licence : 
+    path : /liste_ues_par_licence
+    controller: App\Controller\admin\DiplomesController::uesParLicence
 

@@ -22,10 +22,12 @@ class Connaissances
     #[ORM\Column(length: 255)]
     private ?string $descriptionConn = null;
 
-    #[ORM\ManyToOne(inversedBy: 'connaissances')]
+    #[ORM\ManyToOne(cascade: ["persist"], inversedBy: 'connaissances')]
+    #[ORM\JoinColumn(onDelete: 'CASCADE')]
     private ?Ues $ues = null;
 
-    #[ORM\ManyToOne(inversedBy: 'connaissances')]
+    #[ORM\ManyToOne(cascade: ["persist"], inversedBy: 'connaissances')]
+    #[ORM\JoinColumn(onDelete: 'CASCADE')]
     private ?BlocsConnaissances $blocConnaissances = null;
 
     public function getId(): ?int
