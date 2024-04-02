@@ -5,5 +5,5 @@ client :
 
 liste_ues_par_licence : 
     path : /liste_ues_par_licence
-    controller: App\Controller\admin\DiplomesController::uesParLicence
+    controller: App\Controller\admin\UesController::uesParLicence
 

@@ -16,20 +16,8 @@
                 {% for ue in ues %}
                     <tr>
                         <td>{{ ue.titre }}</td>
-                        <td>
-                            <ul>
-                                {% for connaissance in ue.connaissances %}
-                                    <li>{{ connaissance }}</li>
-                                {% endfor %}
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                {% for competence in ue.competences %}
-                                    <li>{{ competence }}</li>
-                                {% endfor %}
-                            </ul>
-                        </td>
+                        <td>{{ ue.connaissance }}</td>
+                        <td>{{ ue.competence }}</td>
                     </tr>
                 {% endfor %}
             </tbody>

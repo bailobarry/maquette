@@ -71,43 +71,4 @@ class DiplomesController extends AbstractController
         return $this->redirectToRoute('diplome');
     }
 
-    public function uesParLicence(EntityManagerInterface $em): Response
-    {
-        $diplomes = $em->getRepository(Diplomes::class)->findByNomDip('licence');
-
-        $ues = [];
-        foreach ($diplomes as $diplome) {
-            foreach ($diplome->getParcours() as $parcours) {
-                foreach ($parcours->getUes() as $ue) {
-                    $ues[] = [
-                        'titre' => $ue->getTitre(),
-                        'connaissances' => $this->getUeConnaissances($ue),
-                        'competences' => $this->getUeCompetences($ue),
-                    ];
-                }
-            }
-        }
-
-        return $this->render('client/uesDiplomes.html.twig', [
-            'ues' => $ues,
-        ]);
-    }
-
-    private function getUeConnaissances(Ues $ue): array
-    {
-        $connaissances = [];
-        foreach ($ue->getConnaissances() as $connaissance) {
-            $connaissances[] = $connaissance->getDescriptionConn();
-        }
-        return $connaissances;
-    }
-
-    private function getUeCompetences(Ues $ue): array
-    {
-        $competences = [];
-        foreach ($ue->getCompetences() as $competence) {
-            $competences[] = $competence->getDescriptionComp();
-        }
-        return $competences;
-    }
 }
