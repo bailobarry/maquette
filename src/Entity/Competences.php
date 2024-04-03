@@ -23,7 +23,6 @@ class Competences
     private ?int $ectsComp = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\Regex('/^[a-zA-Z0-9éà_ ]+(?: -[a-z0-9éà_ ]+)*$/')]
     private ?string $descriptionComp = null;
 
     

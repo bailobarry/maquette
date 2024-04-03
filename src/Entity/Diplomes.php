@@ -35,7 +35,6 @@ class Diplomes
     private ?int $nbSemestresDip = null;
 
     #[ORM\Column(length: 10)]
-    #[Assert\Regex('/^[0-9_\/]+(?:-[0-9_\/]+)*$/')]
     private ?string $lmd = null;
 
     #[ORM\OneToMany(mappedBy: 'diplomes', targetEntity: Parcours::class)]

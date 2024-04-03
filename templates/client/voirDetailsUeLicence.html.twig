@@ -2,9 +2,9 @@
 
 {% block contenu %}
 
-<div class="card mb-3 border-primary">
-    <div class="card-header bg-primary text-white">
-        <i class="fa fa-info-circle"></i> Détails de l'UE : {{ ue.titre }}
+<div class="card m-4 mb-3 border-primary">
+    <div class="card-header bg-primary text-white text-center fs-5">
+        <i class="fa fa-info-circle "></i> Détails de l'UE : {{ ue.titre }}
     </div>
     <div class="card-body">
         <div class="row">
@@ -61,7 +61,11 @@
             </div>
             <div class="card-body">
                 <ul class="list-unstyled">
-                <li><i class="fa fa-check"></i> <b>Modalité de contrôle</b>: {{ ue.mcc.session1 }}</li>
+                <li><i class="fa fa-check"></i> <b>Modalité de contrôle</b>: <br>
+                    <b>Première session</b>: {{ ue.mcc.session1 }} <br>
+                    <b>Seconde Chance</b>: {{ ue.mcc.secondeChance }} <br>
+                    <b>Deuxième ession</b>: {{ ue.mcc.session2 }}
+                </li>
                 <li><i class="fa fa-flag"></i> <b>Statut</b>: {{ statut }}</li>
                 <li><i class="fa fa-road"></i> <b>Parcours</b>: {{ parcours }}</li>
                 </ul>

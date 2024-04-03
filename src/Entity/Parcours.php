@@ -18,7 +18,6 @@ class Parcours
     private ?int $id = null;
 
     #[ORM\Column(length: 8)]
-    #[Assert\Regex('/^[a-zA-Z0-9éà_ ]+(?: -[a-z0-9éà_ ]+)*$/')]
     private ?string $idParc = null;
 
     #[ORM\Column(length: 100)]

@@ -43,28 +43,10 @@ class ClientController extends AbstractController
         ]);
     }
 
-    public function voirDetailsUeMaster(EntityManagerInterface $em, int $id): Response
-    {
-        $ue = $em->getRepository(Ues::class)->find($id);
-
-        if (!$ue) {
-            throw $this->createNotFoundException('');
-        }
-
-        $statut = $ue->getStatut()->getStatut();
-        $parcours = $ue->getParcours()->getNomParc();
-
-        return $this->render('client/voirDetailsUeMaster.html.twig', [
-            'ue' => $ue,
-            'statut' => $statut,
-            'parcours' => $parcours,
-        ]);
-    }
-
     private function getUesDataByLicense(EntityManagerInterface $em): array
     {
         $ues = [];
-        $diplomes = $em->getRepository(Diplomes::class)->findByLmd('licence');
+        $diplomes = $em->getRepository(Diplomes::class)->findByLmd('Licence');
 
         foreach ($diplomes as $diplome) {
             foreach ($diplome->getParcours() as $parcours) {
@@ -83,7 +65,7 @@ class ClientController extends AbstractController
 
         return $ues;
     }
-    
+
     private function getUeConnaissance(Ues $ue): string
     {
         $connaissances = $ue->getConnaissances();
@@ -113,10 +95,29 @@ class ClientController extends AbstractController
         ]);
     }
 
+    public function voirDetailsUeMaster(EntityManagerInterface $em, int $id): Response
+    {
+        $ue = $em->getRepository(Ues::class)->find($id);
+
+        if (!$ue) {
+            throw $this->createNotFoundException('');
+        }
+
+        $statut = $ue->getStatut()->getStatut();
+        $parcours = $ue->getParcours()->getNomParc();
+
+        return $this->render('client/voirDetailsUeMaster.html.twig', [
+            'ue' => $ue,
+            'statut' => $statut,
+            'parcours' => $parcours,
+        ]);
+    }
+
+
     private function getUesDataByMaster(EntityManagerInterface $em): array
     {
         $ues = [];
-        $diplomes = $em->getRepository(Diplomes::class)->findByLmd('master');
+        $diplomes = $em->getRepository(Diplomes::class)->findByLmd('Master');
 
         foreach ($diplomes as $diplome) {
             foreach ($diplome->getParcours() as $parcours) {

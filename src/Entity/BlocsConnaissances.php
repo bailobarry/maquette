@@ -17,7 +17,6 @@ class BlocsConnaissances
     private ?int $id = null;
 
     #[ORM\Column(length: 8)]
-    #[Assert\Length(min: 2)]
     private ?string $idConn = null;
 
     #[ORM\Column(length: 100)]
@@ -25,7 +24,6 @@ class BlocsConnaissances
     private ?string $nomBlocConn = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\Regex('/^[a-zA-Z0-9éà_ ]+(?: -[a-z0-9éà_ ]+)*$/')]
     private ?string $DescriptionBlocConn = null;
 
     #[ORM\ManyToOne(cascade: ["persist"], inversedBy: 'blocConnaissances')]

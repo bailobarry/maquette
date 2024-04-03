@@ -26,7 +26,6 @@ class Ues
     private ?int $semestre = null;
 
     #[ORM\Column(length: 100)]
-    #[Assert\Regex('/^[a-zA-Z0-9éà_]+(?: -[a-z0-9éà_]+)*$/')]
     private ?string $titre = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
@@ -38,7 +37,6 @@ class Ues
     private ?string $type = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\Regex('/^[a-zA-Z0-9éà_]+(?: -[a-z0-9éà_]+)*$/')]
     private ?string $prerequis = null;
 
     #[ORM\Column]

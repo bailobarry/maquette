@@ -17,7 +17,6 @@ class MCCRNE
     private ?int $id = null;
 
     #[ORM\Column(length: 100)]
-    #[Assert\Regex('/^[a-zA-Z0-9éà_ ]+(?: -[a-z0-9éà_ ]+)*$/')]
     private ?string $session1 = null;
 
     #[ORM\Column(length: 100)]
@@ -25,7 +24,6 @@ class MCCRNE
     private ?string $secondeChance = null;
 
     #[ORM\Column(length: 100)]
-    #[Assert\Regex('/^[a-zA-Z0-9éà_ ]+(?: -[a-z0-9éà_ ]+)*$/')]
     private ?string $session2 = null;
 
     #[ORM\OneToMany(mappedBy: 'mcc', targetEntity: Ues::class)]

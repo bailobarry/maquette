@@ -22,7 +22,6 @@ class Connaissances
     private ?int $ectsConn = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\Regex('/^[a-zA-Z0-9éà_ ]+(?: -[a-z0-9éà_ ]+)*$/')]
     private ?string $descriptionConn = null;
 
     #[ORM\ManyToOne(cascade: ["persist"], inversedBy: 'connaissances')]
