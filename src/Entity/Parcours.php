@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ParcoursRepository::class)]
 class Parcours
@@ -17,12 +18,15 @@ class Parcours
     private ?int $id = null;
 
     #[ORM\Column(length: 8)]
+    #[Assert\Regex('/^[a-zA-Z0-9éà_ ]+(?: -[a-z0-9éà_ ]+)*$/')]
     private ?string $idParc = null;
 
     #[ORM\Column(length: 100)]
+    #[Assert\Regex('/^[a-zA-Z0-9éà_ ]+(?: -[a-z0-9éà_ ]+)*$/')]
     private ?string $nomParc = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
+    #[Assert\Regex('/^[0-9_\/]+(?:-[0-9_\/]+)*$/')]
     private ?string $anneesParc = null;
 
     #[ORM\ManyToOne(cascade: ["persist"], inversedBy: 'parcours')]

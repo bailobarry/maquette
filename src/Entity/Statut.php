@@ -6,6 +6,7 @@ use App\Repository\StatutRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: StatutRepository::class)]
 class Statut
@@ -16,6 +17,7 @@ class Statut
     private ?int $id = null;
 
     #[ORM\Column(length: 15)]
+    #[Assert\Regex('/^[a-zA-Z0-9éà_ ]+(?: -[a-z0-9éà_ ]+)*$/')]
     private ?string $statut = null;
 
     #[ORM\OneToMany(mappedBy: 'statut', targetEntity: Parcours::class)]

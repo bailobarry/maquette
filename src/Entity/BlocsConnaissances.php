@@ -6,6 +6,7 @@ use App\Repository\BlocsConnaissancesRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: BlocsConnaissancesRepository::class)]
 class BlocsConnaissances
@@ -16,12 +17,15 @@ class BlocsConnaissances
     private ?int $id = null;
 
     #[ORM\Column(length: 8)]
+    #[Assert\Length(min: 2)]
     private ?string $idConn = null;
 
     #[ORM\Column(length: 100)]
+    #[Assert\Regex('/^[a-zA-Z0-9éà_ ]+(?: -[a-z0-9éà_ ]+)*$/')]
     private ?string $nomBlocConn = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Regex('/^[a-zA-Z0-9éà_ ]+(?: -[a-z0-9éà_ ]+)*$/')]
     private ?string $DescriptionBlocConn = null;
 
     #[ORM\ManyToOne(cascade: ["persist"], inversedBy: 'blocConnaissances')]

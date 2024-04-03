@@ -6,6 +6,7 @@ use App\Repository\UtilisateursRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UtilisateursRepository::class)]
 class Utilisateurs
@@ -16,15 +17,19 @@ class Utilisateurs
     private ?int $id = null;
 
     #[ORM\Column(length: 15)]
+    #[Assert\Regex('/^[a-zA-Z0-9éà_ ]+(?: -[a-z0-9éà_ ]+)*$/')]
     private ?string $nomUser = null;
 
     #[ORM\Column(length: 30)]
+    #[Assert\Regex('/^[a-zA-Z0-9éà_ ]+(?: -[a-z0-9éà_ ]+)*$/')]
     private ?string $prenomUser = null;
 
     #[ORM\Column(length: 30)]
+    #[Assert\Regex('/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/')]
     private ?string $mail = null;
 
     #[ORM\Column(length: 15)]
+    #[Assert\Regex('/^[a-z0-9]+(?:-[a-z0-9]+)*$/')]
     private ?string $password = null;
 
     #[ORM\ManyToOne(cascade: ["persist"], inversedBy: 'utilisateurs')]

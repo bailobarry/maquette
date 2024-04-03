@@ -13,7 +13,19 @@ register :
 
 utilisateur :
     path : /utilisateur
-    controller : App\Controller\admin\DashboardController::utilisateur
+    controller : App\Controller\admin\UtilisateursController::afficher
+
+ajouter_utilisateur :
+    path : /ajouter_utilisateur
+    controller : App\Controller\admin\UtilisateursController::ajouter
+
+modifier_utilisateur :
+    path : /modifier_utilisateur-{id}
+    controller : App\Controller\admin\UtilisateursController::modifier
+
+supprimer_utilisateur :
+    path : /supprimer_utilisateur-{id}
+    controller : App\Controller\admin\UtilisateursController::supprimer
 
 diplome :
     path : /diplome

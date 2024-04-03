@@ -6,6 +6,7 @@ use App\Repository\RoleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: RoleRepository::class)]
 class Role
@@ -16,6 +17,7 @@ class Role
     private ?int $id = null;
 
     #[ORM\Column(length: 30)]
+    #[Assert\Regex('/^[a-zA-Z0-9éà_ ]+(?: -[a-z0-9éà_ ]+)*$/')]
     private ?string $nomRole = null;
 
     #[ORM\OneToMany(mappedBy: 'role', targetEntity: Utilisateurs::class)]

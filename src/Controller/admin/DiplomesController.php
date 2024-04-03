@@ -47,7 +47,7 @@ class DiplomesController extends AbstractController
         if($formulaire -> isSubmitted() && $formulaire -> isValid()){
             $em -> persist($diplome);
             $em -> flush();
-            $this ->addFlash('Success', 'Diplôme enregistré avec succès.');
+            //$this ->addFlash('Success', 'Diplôme enregistré avec succès.');
             return $this ->redirectToRoute('diplome');
         }
         return $this -> render('admin/maquettes/diplomes/ajouter.html.twig', ['formulaire' => $formulaire->createView(),]);

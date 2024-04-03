@@ -7,6 +7,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: DiplomesRepository::class)]
 class Diplomes
@@ -17,18 +19,23 @@ class Diplomes
     private ?int $id = null;
 
     #[ORM\Column(length: 100)]
+    #[Assert\Regex('/^[a-zA-Z0-9éà_ ]+(?: -[a-z0-9éà_ ]+)*$/')]
     private ?string $nomDip = null;
 
     #[ORM\Column(length: 100)]
+    #[Assert\Regex('/^[a-zA-Z0-9éà_ ]+(?: -[a-z0-9éà_ ]+)*$/')]
     private ?string $etablissementDip = null;
 
     #[ORM\Column(length: 10)]
+    #[Assert\Regex('/^[0-9_\/]+(?:-[0-9_\/]+)*$/')]
     private ?string $anneesDip = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
+    #[Assert\Positive]
     private ?int $nbSemestresDip = null;
 
     #[ORM\Column(length: 10)]
+    #[Assert\Regex('/^[0-9_\/]+(?:-[0-9_\/]+)*$/')]
     private ?string $lmd = null;
 
     #[ORM\OneToMany(mappedBy: 'diplomes', targetEntity: Parcours::class)]

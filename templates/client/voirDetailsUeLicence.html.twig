@@ -1,0 +1,75 @@
+{% extends "client/base.html.twig" %}
+
+{% block contenu %}
+
+<div class="card mb-3 border-primary">
+    <div class="card-header bg-primary text-white">
+        <i class="fa fa-info-circle"></i> Détails de l'UE : {{ ue.titre }}
+    </div>
+    <div class="card-body">
+        <div class="row">
+        <div class="col-md-6">
+            <div class="card border-info">
+            <div class="card-header bg-info text-white">
+                Informations générales
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled">
+                <li><i class="fa fa-book"></i> <b>Référence</b>: {{ ue.reference }}</li>
+                <li><i class="fa fa-calendar"></i> <b>Semestre</b>: {{ ue.semestre }}</li>
+                <li><i class="fa fa-graduation-cap"></i> <b>ECTS</b>: {{ ue.ects }}</li>
+                <li><i class="fa fa-list"></i> <b>Type</b>: {{ ue.type }}</li>
+                </ul>
+            </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card border-success">
+            <div class="card-header bg-success text-white">
+                Contenus et organisation
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled">
+                <li><i class="fa fa-chalkboard"></i> <b>CM</b>: {{ ue.cm }}</li>
+                <li><i class="fa fa-users"></i> <b>TD</b>: {{ ue.td }}</li>
+                <li><i class="fa fa-flask"></i> <b>TP</b>: {{ ue.tp }}</li>
+                <li><i class="fa fa-users"></i> <b>Effectif</b>: {{ ue.effectif }}</li>
+                </ul>
+            </div>
+            </div>
+        </div>
+        </div>
+        <div class="row mt-3">
+        <div class="col-md-6">
+            <div class="card border-warning">
+            <div class="card-header bg-warning text-white">
+                Groupes
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled">
+                <li><i class="fa fa-users"></i> <b>Groupe CM</b>: {{ ue.groupeCM }}</li>
+                <li><i class="fa fa-users"></i> <b>Groupe TD</b>: {{ ue.groupeTD }}</li>
+                <li><i class="fa fa-users"></i> <b>Groupe TP</b>: {{ ue.groupeTP }}</li>
+                </ul>
+            </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card border-danger">
+            <div class="card-header bg-danger text-white">
+                Informations complémentaires
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled">
+                <li><i class="fa fa-check"></i> <b>Modalité de contrôle</b>: {{ ue.mcc.session1 }}</li>
+                <li><i class="fa fa-flag"></i> <b>Statut</b>: {{ statut }}</li>
+                <li><i class="fa fa-road"></i> <b>Parcours</b>: {{ parcours }}</li>
+                </ul>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

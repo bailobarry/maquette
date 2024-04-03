@@ -6,6 +6,7 @@ use App\Repository\MCCRNERepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: MCCRNERepository::class)]
 class MCCRNE
@@ -16,12 +17,15 @@ class MCCRNE
     private ?int $id = null;
 
     #[ORM\Column(length: 100)]
+    #[Assert\Regex('/^[a-zA-Z0-9éà_ ]+(?: -[a-z0-9éà_ ]+)*$/')]
     private ?string $session1 = null;
 
     #[ORM\Column(length: 100)]
+    #[Assert\Regex('/^[a-zA-Z0-9éà_ ]+(?: -[a-z0-9éà_ ]+)*$/')]
     private ?string $secondeChance = null;
 
     #[ORM\Column(length: 100)]
+    #[Assert\Regex('/^[a-zA-Z0-9éà_ ]+(?: -[a-z0-9éà_ ]+)*$/')]
     private ?string $session2 = null;
 
     #[ORM\OneToMany(mappedBy: 'mcc', targetEntity: Ues::class)]

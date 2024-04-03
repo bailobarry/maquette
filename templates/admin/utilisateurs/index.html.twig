@@ -1,0 +1,65 @@
+{% extends "admin/base.html.twig" %}
+{% block contenu %}
+
+<div>
+    {% for message in app.flashes('success') %}
+    <div class="alert alert-success" role="alert">
+        {{ message }}
+    </div>
+    {% endfor %}
+
+    <div class="modal-content">
+        <div class="modal-header bg-primary text-white" align = "center">
+            <h5 class="modal-title" id="exampleModalLongTitle">Gestion des Utilisateurs </h5>
+        </div>
+     
+    </div>
+</div><br><br>
+
+<a type="button" class="btn mr-2 mb-2 btn-primary" href="{{path('ajouter_utilisateur')}}">Nouveau Utilisateur </a>
+
+<div class="main-card mb-3 card">
+    <div class="card-body">
+        <table style="width: 100%;" id="example" class="table table-hover table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Nom de l'utilisateur</th>
+                    <th>Prénom de l'utilisateur</th>
+                    <th>Mail de l'utilisateur</th>
+                    <th>Mot de passe de l'utilisateur</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for utilisateur in utilisateurs %}
+                <tr>
+                    <td>{{ utilisateur.id }}</td>
+                    <td>{{ utilisateur.nomUser }}</td>
+                    <td>{{ utilisateur.prenomUser }}</td>
+                    <td>{{ utilisateur.mail }}</td>
+                    <td>{{ utilisateur.password }}</td>
+                    <td>
+                        <a href="{{ path('modifier_utilisateur', {id: utilisateur.id}) }}" class="btn btn-warning btn-sm text-white">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <a href="{{ path('supprimer_utilisateur', {id: utilisateur.id}) }}" class="btn btn-danger btn-sm">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Nom de l'utilisateur</th>
+                    <th>Prénom de l'utilisateur</th>
+                    <th>Mail de l'utilisateur</th>
+                    <th>Mot de passe de l'utilisateur</th>
+                    <th>Action</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

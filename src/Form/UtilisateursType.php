@@ -17,17 +17,17 @@ class UtilisateursType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom_user', TextType::class, ['label' => 'Nom de l\'utilisateur'])
-            ->add('prenom_user', TextType::class, ['label' => 'Prénom de l\'utilisateur'])
-            ->add('mail', TextType::class, ['label' => 'Mail de l\'utilisateur'])
-            ->add('password', TextType::class, ['label' => 'Mot de passe de l\'utilisateur'])
+            ->add('nomUser', TextType::class, ['label' => 'Nom utilisateur'])
+            ->add('prenomUser', TextType::class, ['label' => 'Prénom utilisateur'])
+            ->add('mail', TextType::class, ['label' => 'Mail utilisateur'])
+            ->add('password', TextType::class, ['label' => 'Mot de passe utilisateur'])
             ->add('diplomes', EntityType::class, [
                 'class' => Diplomes::class,
-                'choice_label' => 'id',
+                'choice_label' => 'nomDip',
             ])
             ->add('role', EntityType::class, [
                 'class' => Role::class,
-                'choice_label' => 'id',
+                'choice_label' => 'nomRole',
             ])
             ->add('save', SubmitType::class, ['label' => 'Enregistrer'])
         ;

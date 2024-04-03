@@ -1,9 +1,25 @@
 
-client : 
+client :
     path : /
     controller: App\Controller\ClientController::index
 
-liste_ues_par_licence : 
+liste_ues_par_licence :
     path : /liste_ues_par_licence
-    controller: App\Controller\admin\UesController::uesParLicence
+    controller: App\Controller\ClientController::uesParLicence
+
+liste_ues_par_master :
+    path : /liste_ues_par_master
+    controller: App\Controller\ClientController::uesParMaster
+
+voir_details_ues_licence:
+    path: /ue/{id}
+    controller: App\Controller\ClientController::voirDetailsUeLicence
+    requirements:
+        id: \d+
+
+voir_details_ues_master:
+    path: /ue/{id}
+    controller: App\Controller\ClientController::voirDetailsUeMaster
+    requirements:
+        id: \d+
 

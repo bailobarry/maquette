@@ -46,19 +46,25 @@
                     <td>{{ diplome.nbSemestresDip }}</td>
                     <td>{{ diplome.lmd }}</td>
                     <td>
+                        <ul>
                         {% for parcours in diplome.parcours %}
-                            {{ parcours.nomParc }}<br>
+                            <li>{{ parcours.nomParc }}</li>
                         {% endfor %}
+                        </ul>
                     </td>
                     <td>
+                        <ul>
                         {% for blocConnaissance in diplome.blocConnaissances %}
-                            {{ blocConnaissance.nomBlocConn }}<br>
+                            <li>{{ blocConnaissance.nomBlocConn }}</li>
                         {% endfor %}
+                        </ul>
                     </td>
                     <td>
+                        <ul>
                         {% for blocCompetence in diplome.blocCompetences %}
-                            {{ blocCompetence.nomBlocComp }}<br>
+                            <li>{{ blocCompetence.nomBlocComp }}</li>
                         {% endfor %}
+                        </ul>
                     </td>
                     <td>
                         <a href="{{ path('modifier_diplome', {id: diplome.id}) }}" class="btn btn-warning btn-sm text-white">

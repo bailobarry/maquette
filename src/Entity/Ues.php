@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UesRepository::class)]
 class Ues
@@ -17,42 +18,55 @@ class Ues
     private ?int $id = null;
 
     #[ORM\Column(length: 10)]
+    #[Assert\Regex('/^[a-zA-Z0-9éà_ ]+(?: -[a-z0-9éà_ ]+)*$/')]
     private ?string $reference = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
+    #[Assert\Positive]
     private ?int $semestre = null;
 
     #[ORM\Column(length: 100)]
+    #[Assert\Regex('/^[a-zA-Z0-9éà_]+(?: -[a-z0-9éà_]+)*$/')]
     private ?string $titre = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
+    #[Assert\Positive]
     private ?int $ects = null;
 
     #[ORM\Column(length: 15)]
+    #[Assert\Regex('/^[a-zA-Z0-9éà_]+(?: -[a-z0-9éà_]+)*$/')]
     private ?string $type = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Regex('/^[a-zA-Z0-9éà_]+(?: -[a-z0-9éà_]+)*$/')]
     private ?string $prerequis = null;
 
     #[ORM\Column]
+    #[Assert\Positive]
     private ?int $cm = null;
 
     #[ORM\Column]
+    #[Assert\Positive]
     private ?int $td = null;
 
     #[ORM\Column]
+    #[Assert\Positive]
     private ?int $tp = null;
 
     #[ORM\Column]
+    #[Assert\Positive]
     private ?int $effectif = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
+    #[Assert\Positive]
     private ?int $groupeCM = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
+    #[Assert\Positive]
     private ?int $groupeTD = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
+    #[Assert\Positive]
     private ?int $groupeTP = null;
 
     #[ORM\ManyToOne(inversedBy: 'ues')]
